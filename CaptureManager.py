@@ -3,6 +3,7 @@ import os
 import sys
 
 
+
 class CaptureManager(object):
 
     def __init__(self, camera=cv2.VideoCapture(0)):
@@ -10,6 +11,13 @@ class CaptureManager(object):
         self._frame = None
         self._path = './'
         self._imageName = '0.jpg'
+        self._windowName ='window 1'
+
+
+    def createwindow(self,windowName=None):
+        if windowName is None:
+            windowName=self._windowName
+        cv2.namedWindow(windowName)
 
     def readFrame(self):
         try:
@@ -27,9 +35,11 @@ class CaptureManager(object):
     def setFrame(self, frame):
         self._frame = frame
 
-    def showFrame(self, windowName='window 1', frame=None):
+    def showFrame(self, windowName= None, frame=None):
         if frame is None:
             frame = self._frame
+        if windowName is None:
+            windowName = self._windowName
 
         try:
             cv2.imshow(windowName, frame)
