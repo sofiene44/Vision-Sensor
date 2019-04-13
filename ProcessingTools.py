@@ -61,7 +61,7 @@ class ProcessingTools(object):
                 print(len(pos), " matching patterns detected")
                 cv2.imshow("frame", temp)
                 cv2.waitKey()
-        return pos
+        return pos, temp
 
     # count pixels of a specific color
     def countColorPixel(self, frame, color=[0, 0, 0], threshold=0, showOutput=False):
@@ -83,13 +83,17 @@ class ProcessingTools(object):
             cv2.imshow("out", outputFrame)
             cv2.waitKey()
         # returns the counted pixels and output frame
-        return [pixels, outputFrame]
+        return pixels, outputFrame
+
+    def gray2BGR(self,frame):
+        return cv2.merge((frame, frame, frame))
 
     def measure(self, edged, minDistance=5, xAxis=False, yAxis=False):
-
+        pt1=(0,0)
+        pt2=(0,0)
         height, width = edged.shape
         xdistance, ydistance = 0, 0
-
+        edged3CH=self.gray2BGR(edged)
         if yAxis:
             midV = edged[:, int(width / 2)]
             y = np.nonzero(midV)
@@ -102,8 +106,11 @@ class ProcessingTools(object):
                     ydistance = y[i + 1] - y[i]
                     print("y distance= ", ydistance)
                     break
-
-            cv2.line(edged, pt1, pt2, 255)
+            # for simple line
+            # cv2.line(edged3CH, pt1, pt2, (255, 0, 0))
+            # for double arrow line
+            cv2.arrowedLine(edged3CH, pt1, pt2,(255, 0, 0))
+            cv2.arrowedLine(edged3CH, pt2, pt1, (255, 0, 0))
 
         if xAxis:
             midH = edged[int(height / 2), :]
@@ -118,37 +125,97 @@ class ProcessingTools(object):
                     print("x distance= ", xdistance)
                     break
 
-            cv2.line(edged, pt1, pt2, 255)
-        cv2.imshow("", edged)
-        cv2.waitKey()
+            # for simple line draw
+            # cv2.line(edged3CH, pt1, pt2, (255, 0, 0))
+            # for double arrow line draw
+            cv2.arrowedLine(edged3CH, pt1, pt2, (255, 0, 0))
+            cv2.arrowedLine(edged3CH, pt2, pt1, (255, 0, 0))
 
-        return xdistance, ydistance
+        return xdistance, ydistance, edged3CH
 
-    def detectCircle(self, frame, sensibility=1.0):
+    def detectCircle (self, frame, sensibility=1.0, shouldBlure=False):
+
+        frame=frame.copy()
+
         if len(frame.shape) == 3:
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         else:
             gray = frame
 
         distanceBetweenCircles = (min(gray.shape)) / 10
-        blurred = cv2.GaussianBlur(gray, (3, 3), 0)
+        if shouldBlure :
+            gray = cv2.GaussianBlur(gray, (3, 3), 0)
         print("detecting circles ...")
         circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, sensibility, distanceBetweenCircles)
-        print(len(circles[0]))
+        print("total circles detected: ", len(circles[0]))
         print(circles[0])
         if circles is not None:
             circles = np.round(circles[0, :]).astype("int")
             for (x, y, r) in circles:
                 # draw the circle in the output image, then draw a rectangle
                 # corresponding to the center of the circle
+                if len(frame.shape)==2:
+                    frame=self.gray2BGR(frame)
+
                 cv2.circle(frame, (x, y), r, (0, 255, 0), 4)
                 cv2.rectangle(frame, (x - 5, y - 5), (x + 5, y + 5), (0, 128, 255), -1)
-        cv2.imshow("", frame)
-        cv2.waitKey()
+        return frame
+
+    def ignoreEdge(self,edged,x,y,height=1,width=1):
+        temp=edged.copy()
+        if len(temp.shape)==2:
+            heightCap=min(y+height,temp.shape[0])
+            widthCap=min(y+width,temp.shape[1])
+            temp[y:heightCap, x:widthCap] = 0
+        return temp
+
+    def compareFeatures(self, master, slave, obr=False):
+        if obr:
+
+            orb = cv2.ORB_create()
+            norm=cv2.NORM_HAMMING
+        else:
+            orb = cv2.xfeatures2d.SURF_create()
+            norm=cv2.NORM_L1
+        master=master.copy()
+        slave=slave.copy()
+        if len(master.shape)==3:
+            master=cv2.cvtColor(master, cv2.COLOR_BGR2GRAY)
+        if len(slave.shape)==3:
+            slave=cv2.cvtColor(slave, cv2.COLOR_BGR2GRAY)
+
+        masterKeypoints, masterDescriptors = orb.detectAndCompute(master, None)
+        slaveKeypoints, slaveDescriptors = orb.detectAndCompute(slave, None)
+
+        if not slaveKeypoints or not masterKeypoints:
+            return
+        matcher = cv2.BFMatcher(norm, crossCheck=True)
+
+        matches=matcher.match(masterDescriptors,slaveDescriptors)
+
+        masterMatches = [(int(masterKeypoints[mat.queryIdx].pt[0]),int(masterKeypoints[mat.queryIdx].pt[1])) for mat in matches[:50]]
+        slaveMatches = [(int(slaveKeypoints[mat.trainIdx].pt[0]),int(slaveKeypoints[mat.trainIdx].pt[1])) for mat in matches[:50]]
+        #matches = sorted(matches, key=lambda x: x.distance)
+
+        print(masterMatches)
+        print(slaveMatches)
+
+        matching_result = cv2.drawMatches(master, masterKeypoints, slave, slaveKeypoints, matches[:4], None, flags=2)
+        cv2.imshow("Matching result", matching_result)
+
+        return masterMatches, slaveMatches
 
 
-# frame = cv2.imread("color-pixel-count.jpg")
-# frame = cv2.imread("piece-mecanique.jpg")
+#
+#
+# frame = cv2.imread("pictures/color-pixel-count.jpg")
+# # frame = cv2.imread("pictures/piece-mecanique.jpg")
+# h,w,_=frame.shape
 #
 # frame = ProcessingTools().detectEdges(frame)
-# print(ProcessingTools().measure(frame, 30, True, True))
+# slave = ProcessingTools().cropFrame(frame,int(w/2)-50, 0, 50, int(h/2))
+#
+# ProcessingTools().compareFeatures(frame,slave)
+# # cv2.imshow("circles",ProcessingTools().detectCircle(frame))
+# #cv2.imshow("frame",frame)
+# cv2.waitKey()

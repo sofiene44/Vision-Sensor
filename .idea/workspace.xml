@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="312f9fde-e7e6-4101-94fd-e48223bd1d94" name="Default Changelist" comment="addition of processing tools (edge detection method) ,slide bar to modifie thresholds and implementation in testClass">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CaptureManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/CaptureManager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProcessingTools.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProcessingTools.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/testClass.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackbar.py" beforeDir="false" afterPath="$PROJECT_DIR$/trackbar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackbar.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testClass.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="60" column="33" selection-start-line="60" selection-start-column="33" selection-end-line="60" selection-end-column="33" />
+            <state relative-caret-position="116">
+              <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -28,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CaptureManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="185" column="60" lean-forward="true" selection-start-line="185" selection-start-column="60" selection-end-line="185" selection-end-column="60" />
+            <state relative-caret-position="305">
+              <caret line="51" column="8" lean-forward="true" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -40,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ProcessingTools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
+            <state relative-caret-position="-595">
+              <caret line="61" column="41" lean-forward="true" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="41" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -71,6 +70,9 @@
       <find>self.w</find>
       <find>.shape</find>
       <find>shape</find>
+      <find>frame</find>
+      <find>surf_crea</find>
+      <find>color-pixel-count.jpg</find>
     </findStrings>
     <replaceStrings>
       <replace>_edgeTrackBar</replace>
@@ -82,6 +84,8 @@
       <replace>_mouseColorSelect</replace>
       <replace>cv2.</replace>
       <replace>x</replace>
+      <replace>master</replace>
+      <replace>pictures/color-pixel-count.jpg</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -105,17 +109,17 @@
         <option value="$PROJECT_DIR$/managers.py" />
         <option value="$PROJECT_DIR$/processingTools.py" />
         <option value="$PROJECT_DIR$/trackbar.py" />
-        <option value="$PROJECT_DIR$/testClass.py" />
-        <option value="$PROJECT_DIR$/ProcessingTools.py" />
         <option value="$PROJECT_DIR$/CaptureManager.py" />
+        <option value="$PROJECT_DIR$/ProcessingTools.py" />
+        <option value="$PROJECT_DIR$/testClass.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1425" />
-    <option name="y" value="-4" />
-    <option name="width" value="1861" />
-    <option name="height" value="1084" />
+    <option name="x" value="85" />
+    <option name="y" value="24" />
+    <option name="width" value="1859" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -129,6 +133,11 @@
               <item name="Vision-Sensor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Vision-Sensor" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Vision-Sensor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vision-Sensor" type="462c0819:PsiDirectoryNode" />
+              <item name="pictures" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -138,6 +147,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../VisionSensor testing" />
   </component>
   <component name="RecentsManager">
@@ -157,7 +167,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ProcessingTools">
+  <component name="RunManager" selected="Python.testClass">
     <configuration name="CaptureManager" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Vision-Sensor" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -265,8 +275,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ProcessingTools" />
         <item itemvalue="Python.testClass" />
+        <item itemvalue="Python.ProcessingTools" />
         <item itemvalue="Python.CaptureManager" />
         <item itemvalue="Python.trackbar" />
         <item itemvalue="Python.managers" />
@@ -305,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554741082352</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added comments &#10;fuse trackbar and captureManager classes &#10;added measuring tool and circle detection tool(not complete)">
+      <created>1555000758285</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1555000758285</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -318,14 +335,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1425" y="-4" width="1861" height="1084" extended-state="6" />
+    <frame x="59" y="-4" width="1307" height="772" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49848023" visible="true" weight="0.12023939" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49848023" visible="true" weight="0.17211838" />
       <window_info id="Structure" order="1" sideWeight="0.50151974" side_tool="true" weight="0.12023939" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32925585" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25382262" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3721973" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39959225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -349,13 +366,54 @@
       </list>
     </option>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="created CaptureManager responsible for capturing showing and saving frames&#10;and test main class for the previous class" />
     <MESSAGE value="Delete edge detection.py&#10;created CaptureManager responsible for capturing showing and saving frames" />
     <MESSAGE value="created CaptureManager responsible for capturing showing and saving frames" />
     <MESSAGE value="addition of processing tools (edge detection method) ,slide bar to modifie thresholds and implementation in testClass" />
     <MESSAGE value="added template detection feature and colored pixel count feature and adjustments in captureManager" />
-    <option name="LAST_COMMIT_MESSAGE" value="added template detection feature and colored pixel count feature and adjustments in captureManager" />
+    <MESSAGE value="added comments &#10;fuse trackbar and captureManager classes &#10;added measuring tool and circle detection tool(not complete)" />
+    <option name="LAST_COMMIT_MESSAGE" value="added comments &#10;fuse trackbar and captureManager classes &#10;added measuring tool and circle detection tool(not complete)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/demo.py" />
@@ -373,43 +431,36 @@
     <entry file="file://$PROJECT_DIR$/01.jpg" />
     <entry file="file://$PROJECT_DIR$/02.jpg" />
     <entry file="file://$PROJECT_DIR$/managers.py" />
-    <entry file="file://$PROJECT_DIR$/mario.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mario_coin.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/color-pixel-count.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trackbar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mario.png" />
+    <entry file="file://$PROJECT_DIR$/mario_coin.png" />
+    <entry file="file://$PROJECT_DIR$/color-pixel-count.jpg" />
+    <entry file="file://$PROJECT_DIR$/trackbar.py" />
+    <entry file="file://$PROJECT_DIR$/piece-mecanique.jpg" />
     <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-1247971764/cv2/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-648">
-          <caret line="7121" column="94" lean-forward="true" selection-start-line="7121" selection-start-column="94" selection-end-line="7121" selection-end-column="94" />
+        <state relative-caret-position="-260">
+          <caret line="4950" column="29" lean-forward="true" selection-start-line="4950" selection-start-column="29" selection-end-line="4950" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/piece-mecanique.jpg">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-1247971764/cv2/xfeatures2d.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="252" column="13" selection-start-line="252" selection-start-column="4" selection-end-line="252" selection-end-column="13" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/testClass.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="60" column="33" selection-start-line="60" selection-start-column="33" selection-end-line="60" selection-end-column="33" />
+        <state relative-caret-position="116">
+          <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CaptureManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="185" column="60" lean-forward="true" selection-start-line="185" selection-start-column="60" selection-end-line="185" selection-end-column="60" />
+        <state relative-caret-position="305">
+          <caret line="51" column="8" lean-forward="true" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -418,8 +469,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ProcessingTools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
+        <state relative-caret-position="-595">
+          <caret line="61" column="41" lean-forward="true" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="41" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

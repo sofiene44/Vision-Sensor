@@ -28,7 +28,7 @@ class TestClass(object):
         self._captureManager.createwindow()
         self._edgeTrackBar.addBar("edge", 100, _edgeThreshold)
         self._coloredPixelCount.addBar("colored pixel", 255, _colorPixelThreshold)
-        self._captureManager.loadFrame("color-pixel-count.jpg")
+        self._captureManager.loadFrame("pictures/color-pixel-count.jpg")
         while True:
             self._startTime = time.time()
             if trigger:
