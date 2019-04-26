@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 import math
-from scipy.spatial import distance as dist
 
 
 class ProcessingTools(object):

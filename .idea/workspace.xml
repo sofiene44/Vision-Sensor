@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="312f9fde-e7e6-4101-94fd-e48223bd1d94" name="Default Changelist" comment="addition of processing tools (edge detection method) ,slide bar to modifie thresholds and implementation in testClass">
+    <list default="true" id="312f9fde-e7e6-4101-94fd-e48223bd1d94" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/GUI/loadingScreen.ui" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUI/mainFrameWindow.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUI/mainFrameWindow.ui" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUI/setupWindow.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUI/setupWindow.ui" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUI/toolSettingsWindow.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUI/toolSettingsWindow.ui" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icons/icon---color-pixel.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icons/icon---color-pixel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icons/icon---edge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icons/icon---measurement.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icons/icon---pattern.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/CaptureManager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProcessingTools.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProcessingTools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaptureManager.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProcessingTools.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/testClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/testClass.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackbar.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,20 +28,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testClass.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+            <state>
+              <caret column="27" lean-forward="true" selection-start-column="27" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CaptureManager.py">
+        <entry file="file://$PROJECT_DIR$/modules/CaptureManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="51" column="8" lean-forward="true" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
+            <state relative-caret-position="227">
+              <caret line="246" column="71" selection-start-line="246" selection-start-column="71" selection-end-line="246" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/CaptureManager22.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="411">
+              <caret line="209" selection-start-line="209" selection-end-line="209" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -36,11 +58,47 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ProcessingTools.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GUI/setupWindow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-595">
-              <caret line="61" column="41" lean-forward="true" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="41" />
+            <state relative-caret-position="486">
+              <caret line="76" column="115" selection-start-line="76" selection-start-column="115" selection-end-line="76" selection-end-column="115" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GUI/toolSettingsWindow.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="24" column="27" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GUI/mainFrameWindow.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1802">
+              <caret line="230" column="37" selection-start-line="230" selection-start-column="27" selection-end-line="230" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/connectivity.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/ProcessingTools.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -59,20 +117,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>release</find>
-      <find />
-      <find>_trackBar</find>
-      <find>template</find>
-      <find>cv.</find>
-      <find>inte</find>
-      <find>self.sel</find>
-      <find>_interactions</find>
-      <find>self.w</find>
-      <find>.shape</find>
-      <find>shape</find>
-      <find>frame</find>
-      <find>surf_crea</find>
-      <find>color-pixel-count.jpg</find>
+      <find>dist</find>
+      <find>distance</find>
+      <find>from</find>
+      <find>crea</find>
+      <find>ManualTr</find>
+      <find>refresh</find>
+      <find>refr</find>
+      <find>#</find>
+      <find>.QPixmap</find>
+      <find>_camera</find>
+      <find>.ref</find>
+      <find>ToolSettingsWindow</find>
+      <find>show</find>
+      <find>MainWindow</find>
+      <find>QtGui.QMainWindow</find>
+      <find>QtGui</find>
+      <find>ref</find>
+      <find>../</find>
+      <find>Image</find>
+      <find>showSetup</find>
+      <find>selected</find>
+      <find>emit</find>
+      <find>closed</find>
+      <find>capture</find>
+      <find>.capture</find>
+      <find>CaptureManager</find>
+      <find>moda</find>
+      <find>mod</find>
+      <find>refres</find>
+      <find>save</find>
     </findStrings>
     <replaceStrings>
       <replace>_edgeTrackBar</replace>
@@ -86,6 +160,11 @@
       <replace>x</replace>
       <replace>master</replace>
       <replace>pictures/color-pixel-count.jpg</replace>
+      <replace>from modules.</replace>
+      <replace>self</replace>
+      <replace>self.</replace>
+      <replace>QtWidgets</replace>
+      <replace>mainWindow</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -109,17 +188,25 @@
         <option value="$PROJECT_DIR$/managers.py" />
         <option value="$PROJECT_DIR$/processingTools.py" />
         <option value="$PROJECT_DIR$/trackbar.py" />
-        <option value="$PROJECT_DIR$/CaptureManager.py" />
         <option value="$PROJECT_DIR$/ProcessingTools.py" />
+        <option value="$PROJECT_DIR$/imagezmq/imagezmq.py" />
+        <option value="$PROJECT_DIR$/connectivity.py" />
+        <option value="$PROJECT_DIR$/CaptureManager.py" />
+        <option value="$PROJECT_DIR$/modules/connectivity.py" />
+        <option value="$PROJECT_DIR$/GUI/toolSettingsWindow.py" />
+        <option value="$PROJECT_DIR$/GUI/mainFrameWindow.py" />
+        <option value="$PROJECT_DIR$/GUI/setupWindow.py" />
+        <option value="$PROJECT_DIR$/modules/CaptureManager.py" />
+        <option value="$PROJECT_DIR$/modules/CaptureManager2.py" />
         <option value="$PROJECT_DIR$/testClass.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="85" />
-    <option name="y" value="24" />
-    <option name="width" value="1859" />
-    <option name="height" value="1055" />
+    <option name="x" value="1424" />
+    <option name="y" value="-4" />
+    <option name="width" value="1863" />
+    <option name="height" value="1085" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -136,7 +223,17 @@
             <path>
               <item name="Vision-Sensor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Vision-Sensor" type="462c0819:PsiDirectoryNode" />
-              <item name="pictures" type="462c0819:PsiDirectoryNode" />
+              <item name="GUI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vision-Sensor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vision-Sensor" type="462c0819:PsiDirectoryNode" />
+              <item name="icons" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vision-Sensor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vision-Sensor" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -148,10 +245,12 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../VisionSensor testing" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/modules" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/modules" />
+      <recent name="$PROJECT_DIR$/GUI" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -168,7 +267,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.testClass">
-    <configuration name="CaptureManager" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="CaptureManager (1)" type="PythonConfigurationType" factoryName="Python">
       <module name="Vision-Sensor" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -176,11 +275,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/modules" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CaptureManager.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modules/CaptureManager22.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -189,7 +288,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ProcessingTools" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="CaptureManager2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Vision-Sensor" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -197,11 +296,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/modules" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProcessingTools.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modules/CaptureManager.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -210,7 +309,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="managers" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="connectivity" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Vision-Sensor" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -222,7 +321,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/managers.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/connectivity.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="mainFrameWindow" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Vision-Sensor" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GUI" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GUI/mainFrameWindow.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -252,7 +372,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="trackbar" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="toolSettingsWindow" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Vision-Sensor" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -260,11 +380,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GUI" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/trackbar.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GUI/toolSettingsWindow.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -276,10 +396,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.testClass" />
-        <item itemvalue="Python.ProcessingTools" />
-        <item itemvalue="Python.CaptureManager" />
-        <item itemvalue="Python.trackbar" />
-        <item itemvalue="Python.managers" />
+        <item itemvalue="Python.CaptureManager2" />
+        <item itemvalue="Python.mainFrameWindow" />
+        <item itemvalue="Python.toolSettingsWindow" />
+        <item itemvalue="Python.connectivity" />
       </list>
     </recent_temporary>
   </component>
@@ -322,7 +442,14 @@
       <option name="project" value="LOCAL" />
       <updated>1555000758285</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="new processing tools">
+      <created>1555152826892</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1555152826892</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -335,26 +462,46 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="59" y="-4" width="1307" height="772" extended-state="6" />
+    <frame x="1424" y="-4" width="1863" height="1085" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49848023" visible="true" weight="0.17211838" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49848023" visible="true" weight="0.16974972" />
       <window_info id="Structure" order="1" sideWeight="0.50151974" side_tool="true" weight="0.12023939" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32925585" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3721973" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2680938" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39959225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32925585" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32925585" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32884902" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3282365" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32925585" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24958678" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49848023" visible="true" weight="0.16974972" />
+      <window_info id="Structure" order="1" sideWeight="0.50151974" side_tool="true" weight="0.12023939" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32925585" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2680938" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39959225" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32925585" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32925585" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3282365" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32925585" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24958678" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -413,7 +560,8 @@
     <MESSAGE value="addition of processing tools (edge detection method) ,slide bar to modifie thresholds and implementation in testClass" />
     <MESSAGE value="added template detection feature and colored pixel count feature and adjustments in captureManager" />
     <MESSAGE value="added comments &#10;fuse trackbar and captureManager classes &#10;added measuring tool and circle detection tool(not complete)" />
-    <option name="LAST_COMMIT_MESSAGE" value="added comments &#10;fuse trackbar and captureManager classes &#10;added measuring tool and circle detection tool(not complete)" />
+    <MESSAGE value="new processing tools" />
+    <option name="LAST_COMMIT_MESSAGE" value="new processing tools" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/demo.py" />
@@ -450,30 +598,102 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/lib/python3.5/dist-packages/zmq/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-488" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imagezmq/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/imagezmq/__version__.py" />
+    <entry file="file://$PROJECT_DIR$/connectivity.py" />
+    <entry file="file://$PROJECT_DIR$/imagezmq/imagezmq.py" />
+    <entry file="file://$PROJECT_DIR$/ProcessingTools.py" />
+    <entry file="file://$PROJECT_DIR$/CaptureManager.py" />
+    <entry file="file://$PROJECT_DIR$/GUI/loadingScreen.ui">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-1247971764/PyQt4/QtGui/QMainWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="979">
+          <caret line="225" column="8" selection-start-line="225" selection-start-column="8" selection-end-line="225" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-1247971764/PyQt4/QtGui/QWidget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="1002" column="8" selection-start-line="1002" selection-start-column="8" selection-end-line="1002" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.5/dist-packages/PyQt5/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/connectivity.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/ProcessingTools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/mainFrameWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1802">
+          <caret line="230" column="37" selection-start-line="230" selection-start-column="27" selection-end-line="230" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/toolSettingsWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="24" column="27" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/CaptureManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="246" column="71" selection-start-line="246" selection-start-column="71" selection-end-line="246" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/CaptureManager22.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="209" selection-start-line="209" selection-end-line="209" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masters/Masters0.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masters/Master1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/setupWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="76" column="115" selection-start-line="76" selection-start-column="115" selection-end-line="76" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/testClass.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CaptureManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="51" column="8" lean-forward="true" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessingTools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-595">
-          <caret line="61" column="41" lean-forward="true" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="27" lean-forward="true" selection-start-column="27" selection-end-column="27" />
         </state>
       </provider>
     </entry>

@@ -1,5 +1,5 @@
-from CaptureManager import *
-from ProcessingTools import ProcessingTools
+from modules.CaptureManager import *
+from modules.ProcessingTools import ProcessingTools
 
 import time
 
@@ -11,7 +11,7 @@ class TestClass(object):
 
     def __init__(self):
         self._startTime = None
-        self._captureManager = CaptureManager()
+        self._captureManager = CaptureManager(0)
         self._processingTools = ProcessingTools()
         self._edgeTrackBar = Trackbar()
         self._coloredPixelCount = Trackbar()
@@ -25,15 +25,15 @@ class TestClass(object):
         trigger = True
         _edgeThreshold = 0
         _colorPixelThreshold = 0
-        self._captureManager.createwindow()
+        self._captureManager.createWindow()
         self._edgeTrackBar.addBar("edge", 100, _edgeThreshold)
         self._coloredPixelCount.addBar("colored pixel", 255, _colorPixelThreshold)
-        self._captureManager.loadFrame("pictures/color-pixel-count.jpg")
+        #self._captureManager.loadFrame("pictures/color-pixel-count.jpg")
         while True:
             self._startTime = time.time()
             if trigger:
-                trigger = False
-            #        self._captureManager.readFrame()
+                #trigger = False
+                self._captureManager.readFrame()
             _frame = self._captureManager.getFrame
             self._captureManager.showFrame()
             key = self._interactions.keyPressed()
@@ -76,6 +76,8 @@ class TestClass(object):
                     self._captureManager.destroyWindow("detected color")
                     toggleColorOn = False
 
+
+
             # test execution time for a single test
             if self._endTime is None:
                 self._endTime = time.time()
@@ -85,5 +87,19 @@ class TestClass(object):
         self._captureManager.destroyWindow()
 
 
+
+#if __name__ == "__main__":
+#    TestClass().runGetFrame()
+
+
 if __name__ == "__main__":
-    TestClass().runGetFrame()
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    captureManager = CaptureManager(0)
+    mainWindowUi = mainWindowUi()
+    mainWindowUi.MainWindow = CustomSlots(mainWindowUi)
+    mainWindowUi.setupUi(mainWindowUi.MainWindow)
+    mainWindowUi.MainWindow.show()
+
+    sys.exit(app.exec_())
+
