@@ -2,6 +2,8 @@ from PyQt4 import QtGui
 
 
 
+
+
 class CustomSlots(QtGui.QMainWindow):
 
     def __init__(self,interface):
@@ -19,6 +21,7 @@ class CustomSlots(QtGui.QMainWindow):
 
     def showSetup(self):
         self._interface.showSetup()
+
 
     def ColorePixelSelected(self):
 
@@ -40,8 +43,22 @@ class CustomSlots(QtGui.QMainWindow):
 
         self._interface.liveStream()
 
+    def showToolSettings1(self):
+        self._interface.showToolSettings(1)
+
+
+    def showToolSettings2(self):
+        self._interface.showToolSettings(2)
+
+
+    def showToolSettings3(self):
+        self._interface.showToolSettings(3)
+
+
+    def showToolSettings4(self):
+        self._interface.showToolSettings(4)
 
     def saveMasterFrame(self):
-        masterName=("MasterImage"+ str(self._interface.captureManager.getProgramNumber)+".jpg")
-        print(masterName)
-        self._interface.captureManager.saveImage(self._interface.frame,"./Masters/",masterName)
+
+        self.snapshot()
+        self._interface.saveMaster()

@@ -199,7 +199,7 @@ class Ui_MainWindow(object):
         self.ImagePreview.setFrameShadow(QtGui.QFrame.Plain)
         self.ImagePreview.setText(_fromUtf8(""))
         self.ImagePreview.setTextFormat(QtCore.Qt.AutoText)
-        self.ImagePreview.setPixmap(QtGui.QPixmap(_fromUtf8("../pictures/ADDIXO.png")))
+        self.ImagePreview.setPixmap(QtGui.QPixmap(_fromUtf8("pictures/ADDIXO.png")))
         self.ImagePreview.setScaledContents(True)
         self.ImagePreview.setAlignment(QtCore.Qt.AlignCenter)
         self.ImagePreview.setWordWrap(False)

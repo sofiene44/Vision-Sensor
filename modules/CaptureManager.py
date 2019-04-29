@@ -25,19 +25,14 @@ class CaptureManager(object):
             _, self._frame = self._camera.read()
             return self._frame
 
-    def saveImage(self, frame=None, path=None, imageName=None):
+    def saveImage(self, frame=None, path="./", imageName=''):
 
         if frame is None:
             frame = self._frame
 
-        if not os.path.exists(path + imageName):
-            #try:
-                cv2.imwrite(path + imageName, frame)
-                print('image successfully saved in "' + path + imageName + '"')
-            #except:
-            #    print("Error saving file")
-        else:
-            print('this name already exists')
+        cv2.imwrite(path + imageName, frame)
+        print('image successfully saved in "' + path + imageName + '"')
+
 
     def makePixmap(self, frame):
         if frame is None:
