@@ -13,7 +13,11 @@ class CaptureManager(object):
             self._cameraIndex = cameraIndex
             self._camera = None
             self._frame = None
+
             self.programNumber=0
+            self.toolIndex=None
+            self.pixelColor=None
+
 
     def loadFrame(self, path):
 
@@ -46,8 +50,18 @@ class CaptureManager(object):
         qImg = QtGui.QImage(temp.data, width, height, bytesPerLine, QtGui.QImage.Format_RGB888).rgbSwapped()
         return qImg
 
+    def isMasterExist(self):
+        if os.path.exists('./Masters/MasterImage'+str(self.programNumber)+'.jpg'):
+            return True
+        else:
+            return False
+
     def addtext(self, frame, pos, text, color=(255,255,255)):
         cv2.putText(frame, text, pos, cv2.FONT_HERSHEY_SIMPLEX, 1.0, color)
+
+    @property
+    def returnSelf(self):
+        return self
 
     @property
     def getFrame(self):

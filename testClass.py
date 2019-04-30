@@ -99,7 +99,7 @@ if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
     captureManager = CaptureManager(0)
-    mainWindowUi = MainWindowUi()
+    mainWindowUi = MainWindowUi(captureManager)
     mainWindowUi.MainWindow = CustomSlots(mainWindowUi)
     mainWindowUi.setupUi(mainWindowUi.MainWindow)
     mainWindowUi.MainWindow.show()

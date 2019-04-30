@@ -1,4 +1,5 @@
-from PyQt4 import QtGui
+from PyQt4 import QtGui ,QtCore
+
 
 
 
@@ -9,6 +10,12 @@ class CustomSlots(QtGui.QMainWindow):
     def __init__(self,interface):
         super(CustomSlots, self).__init__()
         self._interface = interface
+
+
+    def ProgramNumber(self):
+        self._interface.captureManager.programNumber = self._interface.programsList.currentIndex()
+
+
 
     def refreshFrame(self):
 
@@ -62,3 +69,21 @@ class CustomSlots(QtGui.QMainWindow):
 
         self.snapshot()
         self._interface.saveMaster()
+
+
+
+    # def mouseMoveEvent(self, event):
+    #     QtGui.QMainWindow.mouseMoveEvent(self, event)
+    #     pos = event.pos()
+    #     print(pos)
+
+    # def setMouseTracking(self, flag):
+    #     def recursive_set(parent):
+    #         for child in parent.findChildren(QtGui.QWidget):
+    #             child.setMouseTracking(flag)
+    #             recursive_set(child)
+    #     QtGui.QWidget.setMouseTracking(self, flag)
+    #     recursive_set(self)
+
+
+

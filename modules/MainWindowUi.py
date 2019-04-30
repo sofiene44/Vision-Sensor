@@ -10,7 +10,7 @@ class MainWindowUi(Ui_MainWindow):
 
     # Initialise the class to default values ; default camera index corresponds to the computer's default camera
 
-    def __init__(self, captureManager=CaptureManager(0)):
+    def __init__(self, captureManager):
         super(MainWindowUi, self).__init__()
         self.frame=None
         self.MainWindow = None
@@ -25,6 +25,7 @@ class MainWindowUi(Ui_MainWindow):
         self.showFrame(self.frame)
         self.captureManager.cameraRelease()
 
+
     # show frame in specific window ,default frame and window name are shown if not specified
     def showFrame(self, frame):
         temp = self.captureManager.makePixmap(frame)
@@ -34,8 +35,8 @@ class MainWindowUi(Ui_MainWindow):
 
     def showToolSettings(self):
 
-        self.toolSettingsUi = ToolSettingsInterface()
+        self.toolSettingsUi = ToolSettingsInterface(self.captureManager)
 
 
     def showSetup(self):
-        self.setupUi = SetupInterface()
+        self.setupUi = SetupInterface(self.captureManager)
