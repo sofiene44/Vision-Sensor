@@ -16,7 +16,7 @@ class CaptureManager(object):
 
             self.programNumber=0
             self.toolIndex=None
-            self.pixelColor=None
+            self.pixelColor=[None]*4
 
 
     def loadFrame(self, path):
@@ -58,6 +58,9 @@ class CaptureManager(object):
 
     def addtext(self, frame, pos, text, color=(255,255,255)):
         cv2.putText(frame, text, pos, cv2.FONT_HERSHEY_SIMPLEX, 1.0, color)
+
+    def drawRectangle(self,frame,pos1,pos2,color=(255,255,255)):
+        cv2.rectangle(frame,pos1,pos2,color)
 
     @property
     def returnSelf(self):

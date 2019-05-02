@@ -63,7 +63,7 @@ class ProcessingTools(object):
         return pos, temp
 
     # count pixels of a specific color
-    def countColorPixel(self, frame, color=[0, 0, 0], threshold=0, showOutput=False):
+    def countColorPixel(self, frame, color=(0, 0, 0), threshold=0, showOutput=False):
         # calculate the upper and lower threshold for the color detection based on the specified threshold
         upper = np.array(
             [min(color[0] + threshold, 255), min(color[1] + threshold, 255), min(color[2] + threshold, 255)])
@@ -84,7 +84,9 @@ class ProcessingTools(object):
         # returns the counted pixels and output frame
         return pixels, outputFrame
 
-    def gray2BGR(self,frame):
+    @staticmethod
+    def gray2BGR(frame):
+
         return cv2.merge((frame, frame, frame))
 
     def measure(self, edged, minDistance=5, xAxis=False, yAxis=False):
@@ -162,10 +164,12 @@ class ProcessingTools(object):
 
     def ignoreEdge(self,edged,x,y,height=1,width=1):
         temp=edged.copy()
-        if len(temp.shape)==2:
-            heightCap=min(y+height,temp.shape[0])
-            widthCap=min(y+width,temp.shape[1])
-            temp[y:heightCap, x:widthCap] = 0
+        if len(temp.shape) == 2:
+
+            heightCap=max(0, min(y+height,temp.shape[0]))
+            widthCap=max(0, min(x+width,temp.shape[1]))
+            temp[min(y, heightCap):max(y, heightCap), min(x, widthCap):max(x, widthCap)] = 0
+
         return temp
 
     def compareFeatures(self, master, slave, obr=False):

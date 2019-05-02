@@ -35,7 +35,7 @@ class MainWindowUi(Ui_MainWindow):
 
     def showToolSettings(self):
 
-        self.toolSettingsUi = ToolSettingsInterface(self.captureManager)
+        self.toolSettingsUi = ToolSettingsInterface(self,self.captureManager)
 
 
     def showSetup(self):
