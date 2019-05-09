@@ -14,6 +14,7 @@ class CustomSlots(QtGui.QMainWindow):
 
     def ProgramNumber(self):
         self._interface.captureManager.programNumber = self._interface.programsList.currentIndex()
+        self._interface.loadConfig()
 
 
 
@@ -70,20 +71,6 @@ class CustomSlots(QtGui.QMainWindow):
         self.snapshot()
         self._interface.saveMaster()
 
-
-
-    # def mouseMoveEvent(self, event):
-    #     QtGui.QMainWindow.mouseMoveEvent(self, event)
-    #     pos = event.pos()
-    #     print(pos)
-
-    # def setMouseTracking(self, flag):
-    #     def recursive_set(parent):
-    #         for child in parent.findChildren(QtGui.QWidget):
-    #             child.setMouseTracking(flag)
-    #             recursive_set(child)
-    #     QtGui.QWidget.setMouseTracking(self, flag)
-    #     recursive_set(self)
-
-
-
+    def nextPressedOnce(self):
+        self.snapshot()
+        self._interface.nextPressedOnce()

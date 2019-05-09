@@ -25,8 +25,21 @@ class ProcessingTools(object):
         return edged
 
     # crop a frame with specific coordinates
-    def cropFrame(self, frame, x, y, width, height):
-        return frame[y:y + height, x:x + width].copy()
+    def cropFrame(self, frame, x, y,  height,width):
+
+        heightCap = max(0, min(y + height, frame.shape[0]))
+        widthCap = max(0, min(x + width, frame.shape[1]))
+        return frame[min(y, heightCap):max(y, heightCap), min(x, widthCap):max(x, widthCap)].copy()
+
+    def ignoreEdge(self,edged,x,y,height=1,width=1):
+        temp=edged.copy()
+        if len(temp.shape) == 2:
+
+            heightCap=max(0, min(y+height,temp.shape[0]))
+            widthCap=max(0, min(x+width,temp.shape[1]))
+            temp[min(y, heightCap):max(y, heightCap), min(x, widthCap):max(x, widthCap)] = 0
+
+        return temp
 
     # check for pattern overlap
     def notInList(self, newObject, detectedObjects, spaceBetweenObjects):
@@ -48,18 +61,15 @@ class ProcessingTools(object):
         loc = np.where(res >= threshold)
         # save and return detected pattern positions
         pos = []
+        temp = frame.copy()
         for pt in zip(*loc[::-1]):
             if len(pos) == 0 or self.notInList(pt, pos, min(height, width)):
                 pos.append(pt)
 
                 # optional show frames with detected patterns in red boxes
                 if showOutput:
-                    temp = frame.copy()
                     cv2.rectangle(temp, pt, (pt[0] + width, pt[1] + height), (0, 0, 255), 2)
-            if showOutput:
-                print(len(pos), " matching patterns detected")
-                cv2.imshow("frame", temp)
-                cv2.waitKey()
+
         return pos, temp
 
     # count pixels of a specific color
@@ -162,15 +172,6 @@ class ProcessingTools(object):
                 cv2.rectangle(frame, (x - 5, y - 5), (x + 5, y + 5), (0, 128, 255), -1)
         return frame
 
-    def ignoreEdge(self,edged,x,y,height=1,width=1):
-        temp=edged.copy()
-        if len(temp.shape) == 2:
-
-            heightCap=max(0, min(y+height,temp.shape[0]))
-            widthCap=max(0, min(x+width,temp.shape[1]))
-            temp[min(y, heightCap):max(y, heightCap), min(x, widthCap):max(x, widthCap)] = 0
-
-        return temp
 
     def compareFeatures(self, master, slave, obr=False):
         if obr:

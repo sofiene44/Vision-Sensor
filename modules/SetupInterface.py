@@ -204,8 +204,7 @@ class SetupInterface(Ui_SetupWindow):
             edged = self.processingTools.gray2BGR(self.edged[self.captureManager.toolIndex])
             self.captureManager.drawRectangle(edged, (x, y), self.startPoint, (0, 0, 255))
             self.ignoredPixels[self.captureManager.toolIndex].append([(x,y),self.startPoint])
-            print("tool",self.captureManager.toolIndex)
-            print(self.ignoredPixels[self.captureManager.toolIndex])
+
 
         else:
             edged = self.edged[self.captureManager.toolIndex]
@@ -347,7 +346,7 @@ class SetupInterface(Ui_SetupWindow):
             self.ImagePreview.mouseReleaseEvent = self.defaultMouseRelease
             self.statusbar.showMessage("select color using the mouse right button double click")
         elif command == 'cropArea':
-            print(command)
+
             self.ImagePreview.mouseMoveEvent = self.defaultMouseMove
             self.ImagePreview.mouseDoubleClickEvent = self.defaultDoubleClick
             self.ImagePreview.mousePressEvent = self.startCropping
@@ -376,8 +375,7 @@ class SetupInterface(Ui_SetupWindow):
     def nextPressedTwice(self):
         self.saveSettings()
         self.setupWindow.close()
-        print("Save settings")
-        print(self.toolList)
+
 
     def PreviousPressedOnce(self):
         self.ToolsListSetup.hide()
@@ -418,11 +416,11 @@ class SetupInterface(Ui_SetupWindow):
                 self.config.set(tool, "Result", str(self.Results[toolIndex]))
 
             else:
+                self.config.set(tool, "tool name", 'Tool'+str(toolIndex))
                 self.config.set(tool, "tool thresh", str(0))
                 self.config.set(tool, "pixel color", "None")
                 self.config.set(tool, "ignored pixels", "None")
-                self.config.set(tool, "tool name", "None")
-                self.config.set(tool, "Result", "Tool"+str(toolIndex))
+                self.config.set(tool, "Result", "None")
 
         with open('config/config'+str(self.captureManager.programNumber)+'.ini', 'w') as configfile:
             self.config.write(configfile)

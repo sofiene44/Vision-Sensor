@@ -1,7 +1,6 @@
 from modules.CaptureManager import CaptureManager
 from modules.MainWindowUi import MainWindowUi
 from modules.CustomSlots import CustomSlots
-from modules.ProcessingTools import ProcessingTools
 from PyQt4 import QtGui
 
 import time
@@ -89,9 +88,7 @@ import time
 #         self._captureManager.cameraRelease()
 #         self._captureManager.destroyWindow()
 #
-
-
-#if __name__ == "__main__":
+# if __name__ == "__main__":
 #    TestClass().runGetFrame()
 
 
@@ -100,9 +97,9 @@ if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
     captureManager = CaptureManager(0)
     mainWindowUi = MainWindowUi(captureManager)
-    mainWindowUi.MainWindow = CustomSlots(mainWindowUi)
-    mainWindowUi.setupUi(mainWindowUi.MainWindow)
-    mainWindowUi.MainWindow.show()
+    # mainWindowUi.MainWindow = CustomSlots(mainWindowUi)
+    # mainWindowUi.setupUi(mainWindowUi.MainWindow)
+    # mainWindowUi.MainWindow.show()
 
     sys.exit(app.exec_())
 

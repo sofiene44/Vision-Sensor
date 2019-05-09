@@ -242,6 +242,9 @@
          </item>
          <item>
           <widget class="QCheckBox" name="Enable1">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
            <property name="text">
             <string>Enable</string>
            </property>
@@ -533,7 +536,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="NextStepButton_2">
+         <widget class="QPushButton" name="PreviousStepButton">
           <property name="minimumSize">
            <size>
             <width>100</width>
@@ -604,7 +607,11 @@
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>
@@ -657,38 +664,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>NextStepButton</sender>
-   <signal>clicked()</signal>
-   <receiver>ToolsListSetup</receiver>
-   <slot>show()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>916</x>
-     <y>566</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1070</x>
-     <y>470</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>NextStepButton</sender>
-   <signal>clicked()</signal>
-   <receiver>SetupWindow</receiver>
-   <slot>snapshot()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>916</x>
-     <y>566</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>717</x>
-     <y>531</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>ThreshSlider2</sender>
    <signal>valueChanged(int)</signal>
    <receiver>ThreshValue2</receiver>
@@ -711,8 +686,8 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>812</x>
-     <y>345</y>
+     <x>945</x>
+     <y>379</y>
     </hint>
     <hint type="destinationlabel">
      <x>944</x>
@@ -727,8 +702,8 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>822</x>
-     <y>438</y>
+     <x>945</x>
+     <y>488</y>
     </hint>
     <hint type="destinationlabel">
      <x>944</x>
@@ -759,8 +734,8 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>992</x>
-     <y>208</y>
+     <x>1030</x>
+     <y>230</y>
     </hint>
     <hint type="destinationlabel">
      <x>926</x>
@@ -791,8 +766,8 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1022</x>
-     <y>312</y>
+     <x>1030</x>
+     <y>340</y>
     </hint>
     <hint type="destinationlabel">
      <x>1060</x>
@@ -807,8 +782,8 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>989</x>
-     <y>312</y>
+     <x>1030</x>
+     <y>340</y>
     </hint>
     <hint type="destinationlabel">
      <x>931</x>
@@ -823,8 +798,8 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>986</x>
-     <y>317</y>
+     <x>1030</x>
+     <y>340</y>
     </hint>
     <hint type="destinationlabel">
      <x>888</x>
@@ -839,12 +814,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1001</x>
-     <y>420</y>
+     <x>1030</x>
+     <y>449</y>
     </hint>
     <hint type="destinationlabel">
      <x>1060</x>
-     <y>423</y>
+     <y>451</y>
     </hint>
    </hints>
   </connection>
@@ -855,12 +830,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>978</x>
-     <y>421</y>
+     <x>1030</x>
+     <y>449</y>
     </hint>
     <hint type="destinationlabel">
-     <x>917</x>
-     <y>448</y>
+     <x>945</x>
+     <y>488</y>
     </hint>
    </hints>
   </connection>
@@ -871,8 +846,8 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>979</x>
-     <y>418</y>
+     <x>1030</x>
+     <y>449</y>
     </hint>
     <hint type="destinationlabel">
      <x>888</x>
@@ -920,123 +895,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>1060</x>
-     <y>423</y>
+     <y>451</y>
     </hint>
     <hint type="destinationlabel">
      <x>1079</x>
      <y>400</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>NextStepButton</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>saveMasterImageButton</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>916</x>
-     <y>566</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>10</x>
-     <y>53</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>NextStepButton</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>RetakeImageButton</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>916</x>
-     <y>566</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>522</x>
-     <y>61</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>NextStepButton</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>SnapshotButton</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>916</x>
-     <y>566</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>655</x>
-     <y>61</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>NextStepButton_2</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>saveMasterImageButton</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>791</x>
-     <y>547</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>12</x>
-     <y>44</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>NextStepButton_2</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>RetakeImageButton</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>837</x>
-     <y>557</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>515</x>
-     <y>59</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>NextStepButton_2</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>SnapshotButton</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>854</x>
-     <y>550</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>630</x>
-     <y>53</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>NextStepButton_2</sender>
-   <signal>clicked()</signal>
-   <receiver>ToolsListSetup</receiver>
-   <slot>hide()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>851</x>
-     <y>547</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1068</x>
-     <y>463</y>
     </hint>
    </hints>
   </connection>
@@ -1083,8 +946,8 @@
      <y>104</y>
     </hint>
     <hint type="destinationlabel">
-     <x>940</x>
-     <y>128</y>
+     <x>945</x>
+     <y>160</y>
     </hint>
    </hints>
   </connection>
@@ -1120,6 +983,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>NextStepButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SetupWindow</receiver>
+   <slot>nextPressedOnce()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>899</x>
+     <y>552</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>592</x>
+     <y>521</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>PreviousStepButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SetupWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>778</x>
+     <y>556</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>720</x>
+     <y>548</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>snapshot()</slot>
@@ -1129,5 +1024,6 @@
   <slot>showToolSettings2()</slot>
   <slot>showToolSettings3()</slot>
   <slot>showToolSettings4()</slot>
+  <slot>nextPressedOnce()</slot>
  </slots>
 </ui>

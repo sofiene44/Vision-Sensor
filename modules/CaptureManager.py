@@ -16,7 +16,7 @@ class CaptureManager(object):
 
             self.programNumber=0
             self.toolIndex=None
-            self.pixelColor=[None]*4
+
 
 
     def loadFrame(self, path):

@@ -6,7 +6,7 @@ from modules.CaptureManager import CaptureManager
 
 class ToolSettingsInterface(Ui_ToolSettingsWindow):
 
-    def __init__(self, captureManager,parent):
+    def __init__(self, captureManager, parent):
 
         super(ToolSettingsInterface, self).__init__()
         self.toolIndex = captureManager.toolIndex
