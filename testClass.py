@@ -51,7 +51,7 @@ import time
 #                 self._captureManager.saveImage(imageName=imageName + '.jpg')
 #
 #             elif key == ord("e") or toggleEdgeOn:  # apply edge detection
-#                 toggleEdgeOn = True
+#                  toggleEdgeOn = True
 #                 _edgeThreshold = self._edgeTrackBar.getBar
 #                 edges = self._processingTools.detectEdges(_frame, float(_edgeThreshold / 100))
 #                 self._captureManager.showFrame("edges", edges)

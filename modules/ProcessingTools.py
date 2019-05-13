@@ -31,6 +31,14 @@ class ProcessingTools(object):
         widthCap = max(0, min(x + width, frame.shape[1]))
         return frame[min(y, heightCap):max(y, heightCap), min(x, widthCap):max(x, widthCap)].copy()
 
+    def replacePartFrame(self,masterFrame,slaveFrame,x=0,y=0):
+        height,width,_=slaveFrame.shape
+        x=max(x,0)
+        y=max(y,0)
+        frame = masterFrame.copy()
+        frame[y:y + height, x:x + width] = slaveFrame
+        return frame
+
     def ignoreEdge(self,edged,x,y,height=1,width=1):
         temp=edged.copy()
         if len(temp.shape) == 2:

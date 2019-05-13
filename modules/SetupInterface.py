@@ -1,7 +1,7 @@
 from modules.CaptureManager import CaptureManager
 
 from configparser import ConfigParser
-
+import ast
 
 from GUI.setupWindow import *
 from modules.CustomSlots import CustomSlots
@@ -30,7 +30,7 @@ class SetupInterface(Ui_SetupWindow):
         self.setupUi(self.setupWindow)
         self.setupWindow.show()
         self.refresher = refreshFrameThread(self, self.setupWindow)
-        self.config.read('config/config'+str(self.captureManager.programNumber)+'.ini')
+        self.config.read('config/config' + str(self.captureManager.programNumber) + '.ini')
         if self.captureManager.isMasterExist():
             self.frame = captureManager.loadFrame(
                 './Masters/MasterImage' + str(self.captureManager.programNumber) + '.jpg')
@@ -69,6 +69,8 @@ class SetupInterface(Ui_SetupWindow):
         self.ImagePreview.mouseReleaseEvent = self.DoNothing
         self.ImagePreview.mouseMoveEvent = self.DoNothing
         self.setupWindow.keyPressEvent = self.DoNothing
+        self.cropped = self.frame
+        self.loadConfig()
 
     def setToolIndex1(self):
         self.captureManager.toolIndex = 1
@@ -127,7 +129,7 @@ class SetupInterface(Ui_SetupWindow):
                 self.ColorThresh[self.captureManager.toolIndex] is not None and \
                 self.ColorThresh[self.captureManager.toolIndex].isEnabled():
             pixels, frame = self.processingTools.countColorPixel(self.frame, self.pixelColor[
-                self.captureManager.toolIndex],int(self.ColorThresh[self.captureManager.toolIndex].value()))
+                self.captureManager.toolIndex], int(self.ColorThresh[self.captureManager.toolIndex].value()))
 
             self.setImagePreview(frame)
             print(pixels)
@@ -144,17 +146,18 @@ class SetupInterface(Ui_SetupWindow):
         self.countColorPixels()
 
     def measureDistance(self):
-        self.enable('removePixel')
+        self.enable('cropArea')
         xdistance, ydistance, edgedMeasure = self.processingTools.measure(
-            self.edged[self.captureManager.toolIndex], self.measurementThresh[self.captureManager.toolIndex].value(), True, True)
-        self.setImagePreview(edgedMeasure)
+            self.edged[self.captureManager.toolIndex], self.measurementThresh[self.captureManager.toolIndex].value(),
+            True, True)
+        frame=self.processingTools.replacePartFrame(self.frame,edgedMeasure,self.edgedPos[0],self.edgedPos[1])
+        self.setImagePreview(frame)
         self.Results[self.captureManager.toolIndex] = (xdistance, ydistance)
-
 
     def detectPattern(self):
         if self.masterPattern is None:
             self.statusbar.showMessage("no reference found please select a new reference")
-            self.enable('cropArea')
+            self.enable('selectPattern')
         else:
             self.enable('')
         self.setImagePreview(self.frame)
@@ -196,19 +199,58 @@ class SetupInterface(Ui_SetupWindow):
         if (x, y) == self.startPoint:
             # x += 1
             # y += 1
-            self.dragging=False
+            self.dragging = False
 
         if self.dragging:
-            self.edged[self.captureManager.toolIndex] = self.processingTools.ignoreEdge(self.edged[self.captureManager.toolIndex], self.startPoint[0], self.startPoint[1],
-                                                         (y - self.startPoint[1]), (x - self.startPoint[0]))
+            self.edged[self.captureManager.toolIndex] = self.processingTools.ignoreEdge(
+                self.edged[self.captureManager.toolIndex], self.startPoint[0], self.startPoint[1],
+                (y - self.startPoint[1]), (x - self.startPoint[0]))
             edged = self.processingTools.gray2BGR(self.edged[self.captureManager.toolIndex])
             self.captureManager.drawRectangle(edged, (x, y), self.startPoint, (0, 0, 255))
-            self.ignoredPixels[self.captureManager.toolIndex].append([(x,y),self.startPoint])
+            self.ignoredPixels[self.captureManager.toolIndex].append([(x, y), self.startPoint])
 
 
         else:
             edged = self.edged[self.captureManager.toolIndex]
         self.setImagePreview(edged)
+
+    def startSelectingPattern(self, event):
+        x = event.pos().x()
+        y = event.pos().y()
+        self.dragging = True
+        self.startPoint = x, y
+        self.ImagePreview.mouseMoveEvent = self.drawSelection
+
+    def drawSelection(self, event):
+        x = event.pos().x()
+        y = event.pos().y()
+        self.setupWindow.keyPressEvent = self.KeyboardEscapePressed
+        if self.dragging:
+            frame = self.frame.copy()
+            self.captureManager.drawRectangle(frame, (x, y), self.startPoint, (0, 0, 255))
+            self.setImagePreview(frame)
+        else:
+            self.setImagePreview(self.frame)
+
+    def stopSelectingPattern(self, event):
+
+        self.ImagePreview.mouseMoveEvent = self.defaultMouseMove
+        x = event.pos().x()
+        y = event.pos().y()
+        frame = self.frame.copy()
+        if (x, y) == self.startPoint:
+            return
+        if self.dragging:
+            self.masterPattern = self.processingTools.cropFrame(self.frame, self.startPoint[0], self.startPoint[1],
+                                                                (y - self.startPoint[1]), (x - self.startPoint[0]))
+            self.captureManager.drawRectangle(frame, (x, y), self.startPoint, (0, 0, 255))
+            name = QtGui.QFileDialog.getSaveFileName(self.setupWindow, 'Save File', 'MasterPattern' +
+                                                     str(self.captureManager.getProgramNumber) + '.jpg')
+
+            if name.endswith(('.png', '.jpg', '.jpeg')):
+                print(name)
+                self.captureManager.saveImage(self.masterPattern, name)
+        self.setImagePreview(self.frame)
 
     def startCropping(self, event):
         x = event.pos().x()
@@ -239,9 +281,14 @@ class SetupInterface(Ui_SetupWindow):
         if self.dragging:
             self.cropped = self.processingTools.cropFrame(self.frame, self.startPoint[0], self.startPoint[1],
                                                           (y - self.startPoint[1]), (x - self.startPoint[0]))
-            self.captureManager.drawRectangle(frame, (x, y), self.startPoint, (0, 0, 255))
-        self.masterPattern = self.cropped
-        self.setImagePreview(self.frame)
+
+            # self.captureManager.drawRectangle(frame, (x, y), self.startPoint, (0, 0, 255))
+            self.edged[self.captureManager.toolIndex] = self.processingTools.detectEdges(self.cropped)
+            edged3ch = self.processingTools.gray2BGR(self.edged[self.captureManager.toolIndex])
+            frame=self.processingTools.replacePartFrame(frame,edged3ch,min(x, self.startPoint[0]),min(y, self.startPoint[1]))
+            self.edgedPos = (min(x, self.startPoint[0]),min(y, self.startPoint[1]))
+
+        self.setImagePreview(frame)
 
     def coloredPixel(self):
 
@@ -260,7 +307,7 @@ class SetupInterface(Ui_SetupWindow):
             toolName = self.ToolName4
         self.ColorThresh[self.captureManager.toolIndex].setMaximum(255)
         toolName.setText("Color Pixel Tool")
-        self.toolList[self.captureManager.toolIndex]="Color Pixel Tool"
+        self.toolList[self.captureManager.toolIndex] = "Color Pixel Tool"
         QtCore.QObject.connect(self.ColorThresh[self.captureManager.toolIndex], QtCore.SIGNAL("valueChanged(int)"),
                                self.countColorPixels)
         QtCore.QObject.connect(self.ColorThresh[self.captureManager.toolIndex], QtCore.SIGNAL("sliderPressed()"),
@@ -270,6 +317,7 @@ class SetupInterface(Ui_SetupWindow):
 
     def measurement(self):
 
+        self.enable('cropArea')
         if self.captureManager.toolIndex == 1:
             self.measurementThresh[self.captureManager.toolIndex] = self.ThreshSlider1
             toolName = self.ToolName1
@@ -283,19 +331,18 @@ class SetupInterface(Ui_SetupWindow):
             self.measurementThresh[self.captureManager.toolIndex] = self.ThreshSlider4
             toolName = self.ToolName4
         toolName.setText("measurement Tool")
-        self.ignoredPixels[self.captureManager.toolIndex]=[]
+        self.ignoredPixels[self.captureManager.toolIndex] = []
         self.toolList[self.captureManager.toolIndex] = "measurement Tool"
-        self.measurementThresh[self.captureManager.toolIndex].setMaximum(max(self.frame.shape))
-        self.edged[self.captureManager.toolIndex] = self.processingTools.detectEdges(self.frame)
+        self.measurementThresh[self.captureManager.toolIndex].setMaximum(max(self.cropped.shape))
 
-        self.setImagePreview(self.edged[self.captureManager.toolIndex])
+        self.setImagePreview(self.frame)
         QtCore.QObject.connect(self.measurementThresh[self.captureManager.toolIndex],
                                QtCore.SIGNAL("valueChanged(int)"),
                                self.measureDistance)
         QtCore.QObject.connect(self.measurementThresh[self.captureManager.toolIndex], QtCore.SIGNAL("sliderPressed()"),
                                self.measureDistance)
 
-        self.enable('removePixel')
+        # self.enable('removePixel')
 
     def patternDetection(self):
         try:
@@ -305,7 +352,7 @@ class SetupInterface(Ui_SetupWindow):
             pass
         if self.masterPattern is None:
             self.statusbar.showMessage("no reference found please select a new reference")
-            self.enable('cropArea')
+            self.enable('selectPattern')
 
         if self.captureManager.toolIndex == 1:
             self.patternThresh[self.captureManager.toolIndex] = self.ThreshSlider1
@@ -320,7 +367,7 @@ class SetupInterface(Ui_SetupWindow):
             self.patternThresh[self.captureManager.toolIndex] = self.ThreshSlider4
             toolName = self.ToolName4
         else:
-            toolName=None
+            toolName = None
         self.patternThresh[self.captureManager.toolIndex].setMaximum(100)
         toolName.setText("Pattern Detection Tool")
         self.toolList[self.captureManager.toolIndex] = "Pattern Detection Tool"
@@ -345,13 +392,22 @@ class SetupInterface(Ui_SetupWindow):
             self.ImagePreview.mousePressEvent = self.defaultMousePress
             self.ImagePreview.mouseReleaseEvent = self.defaultMouseRelease
             self.statusbar.showMessage("select color using the mouse right button double click")
+        elif command == 'selectPattern':
+
+            self.ImagePreview.mouseMoveEvent = self.defaultMouseMove
+            self.ImagePreview.mouseDoubleClickEvent = self.defaultDoubleClick
+            self.ImagePreview.mousePressEvent = self.startSelectingPattern
+            self.ImagePreview.mouseReleaseEvent = self.stopSelectingPattern
+            self.statusbar.showMessage("select the master pattern using the mouse right button")
+
         elif command == 'cropArea':
 
             self.ImagePreview.mouseMoveEvent = self.defaultMouseMove
             self.ImagePreview.mouseDoubleClickEvent = self.defaultDoubleClick
             self.ImagePreview.mousePressEvent = self.startCropping
             self.ImagePreview.mouseReleaseEvent = self.stopCropping
-            self.statusbar.showMessage("select the master pattern using the mouse right button")
+            self.statusbar.showMessage("select the area of interest using the mouse right button")
+
         else:
             self.ImagePreview.mouseMoveEvent = self.defaultMouseMove
             self.ImagePreview.mouseDoubleClickEvent = self.defaultDoubleClick
@@ -376,7 +432,6 @@ class SetupInterface(Ui_SetupWindow):
         self.saveSettings()
         self.setupWindow.close()
 
-
     def PreviousPressedOnce(self):
         self.ToolsListSetup.hide()
         self.setImagePreview(self.frame)
@@ -392,7 +447,7 @@ class SetupInterface(Ui_SetupWindow):
 
         for toolIndex in range(1, 5):
             tool = "Tool" + str(toolIndex) + "_Settings"
-            self.config.set(tool, "tool name",str(self.toolList[toolIndex]))
+            self.config.set(tool, "tool name", str(self.toolList[toolIndex]))
 
             if self.toolList[toolIndex] == 'Color Pixel Tool' and self.ColorThresh[toolIndex].isEnabled():
 
@@ -416,14 +471,81 @@ class SetupInterface(Ui_SetupWindow):
                 self.config.set(tool, "Result", str(self.Results[toolIndex]))
 
             else:
-                self.config.set(tool, "tool name", 'Tool'+str(toolIndex))
+                self.config.set(tool, "tool name", 'Tool' + str(toolIndex))
                 self.config.set(tool, "tool thresh", str(0))
                 self.config.set(tool, "pixel color", "None")
                 self.config.set(tool, "ignored pixels", "None")
                 self.config.set(tool, "Result", "None")
 
-        with open('config/config'+str(self.captureManager.programNumber)+'.ini', 'w') as configfile:
+        with open('config/config' + str(self.captureManager.programNumber) + '.ini', 'w') as configfile:
             self.config.write(configfile)
+
+    def loadConfig(self):
+        self.config.read('config/config' + str(self.captureManager.programNumber) + '.ini')
+
+        self.ColorThresh = [None] * 5
+        self.pixelColor = [None] * 5
+        self.measurementThresh = [None] * 5
+        self.patternThresh = [None] * 5
+        self.toolList = [None] * 5
+        self.ignoredPixels = [None] * 5
+        self.Results = [None] * 5
+
+        self.ToolName1.setText(self.config.get("Tool1_Settings", "tool name"))
+        self.ToolName2.setText(self.config.get("Tool2_Settings", "tool name"))
+        self.ToolName3.setText(self.config.get("Tool3_Settings", "tool name"))
+        self.ToolName4.setText(self.config.get("Tool4_Settings", "tool name"))
+
+        if self.config.get("Tool1_Settings", "tool name") == 'Tool1':
+            self.Enable1.setChecked(False)
+
+
+        else:
+            self.Enable1.setChecked(True)
+            self.ThreshSlider1.setValue(int(self.config.get("Tool1_Settings", "tool thresh")))
+
+        if self.config.get("Tool2_Settings", "tool name") == 'Tool2':
+            self.Enable2.setChecked(False)
+
+        else:
+            self.Enable2.setChecked(True)
+            self.ThreshSlider2.setValue(int(self.config.get("Tool2_Settings", "tool thresh")))
+
+        if self.config.get("Tool3_Settings", "tool name") == 'Tool3':
+            self.Enable3.setChecked(False)
+        else:
+            self.Enable3.setChecked(True)
+            self.ThreshSlider3.setValue(int(self.config.get("Tool3_Settings", "tool thresh")))
+
+        if self.config.get("Tool4_Settings", "tool name") == 'Tool4':
+            self.Enable4.setChecked(False)
+
+        else:
+            self.Enable4.setChecked(True)
+            self.ThreshSlider4.setValue(int(self.config.get("Tool4_Settings", "tool thresh")))
+
+        for toolIndex in range(1, 5):
+            tool = "Tool" + str(toolIndex) + "_Settings"
+            if self.config.get(tool, "tool name") == 'Color Pixel Tool':
+                pixelColor = self.config.get(tool, "pixel color")
+                self.pixelColor[toolIndex] = [int(e.strip('[],')) for e in pixelColor.split(' ')]
+                self.Results[toolIndex] = int(self.config.get(tool, "result"))
+                self.ColorThresh[toolIndex] = int(self.config.get(tool, 'tool thresh'))
+                self.captureManager.toolIndex = toolIndex
+                self.coloredPixel()
+
+            elif self.config.get(tool, "tool name") == 'measurement Tool':
+                self.ignoredPixels[toolIndex] = ast.literal_eval(self.config.get(tool, "ignored pixels"))
+                self.Results[toolIndex] = ast.literal_eval(self.config.get(tool, "result"))
+                self.measurementThresh[toolIndex] = int(self.config.get(tool, 'tool thresh'))
+                self.captureManager.toolIndex = toolIndex
+                self.measurement()
+
+            elif self.config.get(tool, "tool name") == 'Pattern Detection Tool':
+                self.patternThresh[toolIndex] = int(self.config.get(tool, 'tool thresh'))
+                self.Results[toolIndex] = int(self.config.get(tool, "result"))
+                self.captureManager.toolIndex = toolIndex
+                self.patternDetection()
 
 
 class refreshFrameThread(QThread):

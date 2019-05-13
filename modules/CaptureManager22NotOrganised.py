@@ -95,7 +95,7 @@ class CaptureManager(Ui_MainWindow):
 
     def makePixmap(self, frame):
         if len(frame.shape) < 3:
-            temp = ProcessingTools.gray2BGR(frame)
+            temp = ProcessingTools.gray2BGR()
         else:
             temp = frame
         height, width, channel = temp.shape
