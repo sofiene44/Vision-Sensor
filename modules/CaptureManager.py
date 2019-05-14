@@ -5,19 +5,15 @@ from modules.ProcessingTools import ProcessingTools
 from PyQt4 import QtGui
 
 
-
-
 class CaptureManager(object):
     def __init__(self, cameraIndex=None):
-            self._activeWindow = None
-            self._cameraIndex = cameraIndex
-            self._camera = None
-            self._frame = None
+        self._activeWindow = None
+        self._cameraIndex = cameraIndex
+        self._camera = None
+        self._frame = None
 
-            self.programNumber=0
-            self.toolIndex=None
-
-
+        self.programNumber = 0
+        self.toolIndex = None
 
     def loadFrame(self, path):
 
@@ -37,7 +33,6 @@ class CaptureManager(object):
         cv2.imwrite(path + imageName, frame)
         print('image successfully saved in "' + path + imageName + '"')
 
-
     def makePixmap(self, frame):
         if frame is None:
             return None
@@ -51,16 +46,20 @@ class CaptureManager(object):
         return qImg
 
     def isMasterExist(self):
-        if os.path.exists('./Masters/MasterImage'+str(self.programNumber)+'.jpg'):
+        if os.path.exists('./Masters/MasterImage' + str(self.programNumber) + '.jpg'):
             return True
         else:
             return False
 
-    def addtext(self, frame, pos, text, color=(255,255,255)):
+    def addtext(self, frame, pos, text, color=(255, 255, 255)):
         cv2.putText(frame, text, pos, cv2.FONT_HERSHEY_SIMPLEX, 1.0, color)
 
-    def drawRectangle(self,frame,pos1,pos2,color=(255,255,255)):
-        cv2.rectangle(frame,pos1,pos2,color)
+    def drawRectangle(self, frame, pos1, pos2, color=(255, 255, 255)):
+        cv2.rectangle(frame, pos1, pos2, color)
+
+    def drawArrow(self, frame, pt1, pt2, color=(255, 0, 0)):
+        cv2.arrowedLine(frame, pt1, pt2, color)
+        cv2.arrowedLine(frame, pt2, pt1, color)
 
     @property
     def returnSelf(self):
@@ -77,8 +76,8 @@ class CaptureManager(object):
     def getActiveWindow(self):
         return self._activeWindow
 
-    def setActiveWindow(self,activeWindow):
-        self._activeWindow=activeWindow
+    def setActiveWindow(self, activeWindow):
+        self._activeWindow = activeWindow
 
     @property
     def getProgramNumber(self):
@@ -87,7 +86,7 @@ class CaptureManager(object):
     def cameraRelease(self):
         if self._camera is not None:
             self._camera.release()
-            self._camera=None
+            self._camera = None
 
     def setCamera(self, cameraIndex=None):
 
@@ -97,12 +96,6 @@ class CaptureManager(object):
         else:
             self.cameraRelease()
             self._camera = cv2.VideoCapture(cameraIndex)
-
-
-
-
-
-
 
 #
 # class Interactions(object):

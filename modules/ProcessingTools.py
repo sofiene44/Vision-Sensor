@@ -107,6 +107,15 @@ class ProcessingTools(object):
 
         return cv2.merge((frame, frame, frame))
 
+    def getNearestPos(self, edged, pos):
+        nonzero = cv2.findNonZero(edged)
+        if nonzero is None:
+            return None, None
+
+        distances = np.sqrt((nonzero[:, :, 0] - pos[0]) ** 2 + (nonzero[:, :, 1] - pos[1]) ** 2)
+        nearest_index = np.argmin(distances)
+        return nonzero[nearest_index][0][0], nonzero[nearest_index][0][1]
+
     def measure(self, edged, minDistance=5, xAxis=False, yAxis=False):
         pt1=(0,0)
         pt2=(0,0)

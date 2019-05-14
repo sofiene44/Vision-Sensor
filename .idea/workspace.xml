@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="312f9fde-e7e6-4101-94fd-e48223bd1d94" name="Default Changelist" comment="adapting colorPixelCount tool to the GUI">
+    <list default="true" id="312f9fde-e7e6-4101-94fd-e48223bd1d94" name="Default Changelist" comment="remove ignore edge feature and add crop feature for edge detection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI/mainFrameWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/mainFrameWindow.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config0.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config0.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/CaptureManager22NotOrganised.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/CaptureManager22NotOrganised.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/MainWindowUi.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/MainWindowUi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/CaptureManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/CaptureManager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/ProcessingTools.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/ProcessingTools.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/SetupInterface.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/SetupInterface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/testClass.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testClass.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+            <state relative-caret-position="334">
+              <caret line="57" column="30" lean-forward="true" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -34,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/SetupInterface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="152" column="40" lean-forward="true" selection-start-line="152" selection-start-column="40" selection-end-line="152" selection-end-column="40" />
+            <state relative-caret-position="304">
+              <caret line="334" lean-forward="true" selection-start-line="334" selection-end-line="334" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -43,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/ProcessingTools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="18" column="57" lean-forward="true" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+            <state relative-caret-position="161">
+              <caret line="112" column="25" selection-start-line="112" selection-start-column="25" selection-end-line="112" selection-end-column="25" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -58,7 +54,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/MainWindowUi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
+            <state relative-caret-position="-1316">
               <caret line="158" column="78" lean-forward="true" selection-start-line="158" selection-start-column="78" selection-end-line="158" selection-end-column="78" />
               <folding>
                 <element signature="e#2#35#0" expanded="true" />
@@ -70,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/CaptureManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="124" column="31" lean-forward="true" selection-start-line="124" selection-start-column="31" selection-end-line="124" selection-end-column="31" />
+            <state relative-caret-position="206">
+              <caret line="59" column="60" lean-forward="true" selection-start-line="59" selection-start-column="60" selection-end-line="59" selection-end-column="60" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -135,13 +131,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self.ImagePreview.mousePressEvent=self.startIgnoring</find>
-      <find>print(</find>
-      <find>slider4</find>
-      <find>'dra</find>
-      <find>cv2.</find>
-      <find>self.ColorThresh</find>
-      <find>captureManager.toolIndex =</find>
       <find>captureManager.toolIndex</find>
       <find>captureManager.toolIndex=</find>
       <find>.copy</find>
@@ -165,9 +154,15 @@
       <find>selectPattern</find>
       <find>Cropping</find>
       <find>Cropped</find>
+      <find>rec</find>
+      <find>rect</find>
+      <find>draw</find>
+      <find>edgedPos</find>
+      <find>edgedPos</find>
+      <find>self.mixedFrame</find>
+      <find>mixedFrame</find>
     </findStrings>
     <replaceStrings>
-      <replace>masterPattern</replace>
       <replace>self.selected[</replace>
       <replace>self.selected</replace>
       <replace>self.height</replace>
@@ -197,6 +192,7 @@
       <replace>setImagePreview</replace>
       <replace />
       <replace>Selection</replace>
+      <replace>mixedFrame[self.captureManager.toolIndex]</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -232,7 +228,6 @@
         <option value="$PROJECT_DIR$/aaaaa.py" />
         <option value="$PROJECT_DIR$/GUI/setupWindow.py" />
         <option value="$PROJECT_DIR$/config.ini" />
-        <option value="$PROJECT_DIR$/modules/CaptureManager.py" />
         <option value="$PROJECT_DIR$/config2.ini" />
         <option value="$PROJECT_DIR$/modules/ToolSettingsInterface.py" />
         <option value="$PROJECT_DIR$/modules/CustomSlots.py" />
@@ -245,22 +240,24 @@
         <option value="$PROJECT_DIR$/testClass.py" />
         <option value="$PROJECT_DIR$/config/config0.ini" />
         <option value="$PROJECT_DIR$/modules/MainWindowUi.py" />
+        <option value="$PROJECT_DIR$/modules/CaptureManager.py" />
         <option value="$PROJECT_DIR$/modules/ProcessingTools.py" />
         <option value="$PROJECT_DIR$/modules/SetupInterface.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1425" />
+    <option name="x" value="1424" />
     <option name="y" value="-4" />
-    <option name="width" value="1861" />
-    <option name="height" value="1084" />
+    <option name="width" value="1863" />
+    <option name="height" value="1085" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -308,7 +305,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -569,7 +565,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557411302596</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="remove ignore edge feature and add crop feature for edge detection">
+      <created>1557752225980</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1557752225980</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -590,14 +593,14 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32925585" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28542304" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49945593" visible="true" weight="0.28542304" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39959225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.20591234" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32925585" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3282365" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005441" side_tool="true" weight="0.28542304" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32110092" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -688,7 +691,8 @@
     <MESSAGE value="adapting measurement tool to the GUI&#10;and adding multi tool configuration feature" />
     <MESSAGE value="save config feature" />
     <MESSAGE value="add save and load configuration feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="add save and load configuration feature" />
+    <MESSAGE value="remove ignore edge feature and add crop feature for edge detection" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove ignore edge feature and add crop feature for edge detection" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/piece-mecanique.jpg" />
@@ -895,8 +899,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/CaptureManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="124" column="31" lean-forward="true" selection-start-line="124" selection-start-column="31" selection-end-line="124" selection-end-column="31" />
+        <state relative-caret-position="206">
+          <caret line="59" column="60" lean-forward="true" selection-start-line="59" selection-start-column="60" selection-end-line="59" selection-end-column="60" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -905,7 +909,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/MainWindowUi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
+        <state relative-caret-position="-1316">
           <caret line="158" column="78" lean-forward="true" selection-start-line="158" selection-start-column="78" selection-end-line="158" selection-end-column="78" />
           <folding>
             <element signature="e#2#35#0" expanded="true" />
@@ -913,10 +917,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/modules/ProcessingTools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="112" column="25" selection-start-line="112" selection-start-column="25" selection-end-line="112" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modules/SetupInterface.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="152" column="40" lean-forward="true" selection-start-line="152" selection-start-column="40" selection-end-line="152" selection-end-column="40" />
+        <state relative-caret-position="304">
+          <caret line="334" lean-forward="true" selection-start-line="334" selection-end-line="334" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
@@ -925,20 +939,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testClass.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+        <state relative-caret-position="334">
+          <caret line="57" column="30" lean-forward="true" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ProcessingTools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="18" column="57" lean-forward="true" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>

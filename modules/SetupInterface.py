@@ -19,6 +19,10 @@ class SetupInterface(Ui_SetupWindow):
         self.capture = True
         self.captureManager = captureManager
         self.edged = [None] * 5
+        self.edgedPos = [None] * 5
+        self.mixedFrame = [None] * 5
+        self.firstMeasurePoint=(0, 0)
+        self.secondMeasurePoint=(0, 0)
         self.ColorThresh = [None] * 5
         self.pixelColor = [None] * 5
         self.measurementThresh = [None] * 5
@@ -71,6 +75,7 @@ class SetupInterface(Ui_SetupWindow):
         self.setupWindow.keyPressEvent = self.DoNothing
         self.cropped = self.frame
         self.loadConfig()
+        self.setImagePreview(self.frame)
 
     def setToolIndex1(self):
         self.captureManager.toolIndex = 1
@@ -146,13 +151,26 @@ class SetupInterface(Ui_SetupWindow):
         self.countColorPixels()
 
     def measureDistance(self):
+
+
+        self.setImagePreview(self.frame)
         self.enable('cropArea')
-        xdistance, ydistance, edgedMeasure = self.processingTools.measure(
-            self.edged[self.captureManager.toolIndex], self.measurementThresh[self.captureManager.toolIndex].value(),
-            True, True)
-        frame=self.processingTools.replacePartFrame(self.frame,edgedMeasure,self.edgedPos[0],self.edgedPos[1])
+        # xdistance, ydistance, edgedMeasure = self.processingTools.measure(
+        #     self.edged[self.captureManager.toolIndex], self.measurementThresh[self.captureManager.toolIndex].value(),
+        #     True, True)
+        if self.mixedFrame[self.captureManager.toolIndex] is None:
+            return
+        xdistance = abs(self.firstMeasurePoint[0] - self.secondMeasurePoint[0])
+        ydistance = abs(self.firstMeasurePoint[1] - self.secondMeasurePoint[1])
+        distance = (xdistance ** 2 + ydistance ** 2) ** (1 / 2)
+        print(xdistance, ydistance, distance)
+
+        frame = self.mixedFrame[self.captureManager.toolIndex].copy()
+        self.captureManager.drawArrow(frame, self.firstMeasurePoint, self.secondMeasurePoint)
+        # frame=self.processingTools.replacePartFrame(self.frame,self.edged[self.captureManager.toolIndex], self.edgedPos[self.captureManager.toolIndex][0][0],self.edgedPos[self.captureManager.toolIndex][0][1])
+        # frame=self.processingTools.replacePartFrame(self.frame,edgedMeasure, self.edgedPos[self.captureManager.toolIndex][0][0],self.edgedPos[self.captureManager.toolIndex][0][1])
         self.setImagePreview(frame)
-        self.Results[self.captureManager.toolIndex] = (xdistance, ydistance)
+        self.Results[self.captureManager.toolIndex] = (xdistance, ydistance, distance)
 
     def detectPattern(self):
         if self.masterPattern is None:
@@ -285,10 +303,95 @@ class SetupInterface(Ui_SetupWindow):
             # self.captureManager.drawRectangle(frame, (x, y), self.startPoint, (0, 0, 255))
             self.edged[self.captureManager.toolIndex] = self.processingTools.detectEdges(self.cropped)
             edged3ch = self.processingTools.gray2BGR(self.edged[self.captureManager.toolIndex])
-            frame=self.processingTools.replacePartFrame(frame,edged3ch,min(x, self.startPoint[0]),min(y, self.startPoint[1]))
-            self.edgedPos = (min(x, self.startPoint[0]),min(y, self.startPoint[1]))
+            self.mixedFrame[self.captureManager.toolIndex] = self.processingTools.replacePartFrame(frame, edged3ch,
+                                                                                                   min(x,
+                                                                                                       self.startPoint[
+                                                                                                           0]), min(y,
+                                                                                                                    self.startPoint[
+                                                                                                                        1]))
+            self.edgedPos[self.captureManager.toolIndex] = ((min(x, self.startPoint[0]), min(y, self.startPoint[1])),
+                                                            (max(x, self.startPoint[0]), max(y, self.startPoint[1])))
+            frame = self.mixedFrame[self.captureManager.toolIndex]
+            self.enable('measure')
+            from cv2 import findNonZero
+            if findNonZero(self.edged[self.captureManager.toolIndex]) is None:
+                self.resetCrop()
+                return
 
         self.setImagePreview(frame)
+
+    def selectMeasurePointFirst(self, event):
+
+        x = event.pos().x()
+        y = event.pos().y()
+
+        if x < self.edgedPos[self.captureManager.toolIndex][0][0] or x > \
+                self.edgedPos[self.captureManager.toolIndex][1][0] or y < \
+                self.edgedPos[self.captureManager.toolIndex][0][1] or y > \
+                self.edgedPos[self.captureManager.toolIndex][1][1]:
+            self.dragging = False
+            self.enable('measure')
+            return
+
+        # add approximation function
+        xedged = x - self.edgedPos[self.captureManager.toolIndex][0][0]
+        yedged = y - self.edgedPos[self.captureManager.toolIndex][0][1]
+        xedged, yedged = self.processingTools.getNearestPos(self.edged[self.captureManager.toolIndex], (xedged, yedged))
+
+        x = xedged + self.edgedPos[self.captureManager.toolIndex][0][0]
+        y = yedged + self.edgedPos[self.captureManager.toolIndex][0][1]
+
+        self.dragging = True
+        self.firstMeasurePoint = (x, y)
+
+        self.ImagePreview.mouseMoveEvent = self.drawArrow
+        self.ImagePreview.mousePressEvent = self.selectMeasurePointSecond
+
+
+    def drawArrow(self, event):
+
+        x = event.pos().x()
+        y = event.pos().y()
+
+        self.setupWindow.keyPressEvent = self.KeyboardEscapePressed
+        if self.dragging:
+            frame = self.mixedFrame[self.captureManager.toolIndex].copy()
+            self.captureManager.drawArrow(frame, self.firstMeasurePoint, (x, y))
+            self.setImagePreview(frame)
+        else:
+            self.setImagePreview(self.mixedFrame[self.captureManager.toolIndex])
+
+    def selectMeasurePointSecond(self, event):
+        x = event.pos().x()
+        y = event.pos().y()
+        if x < self.edgedPos[self.captureManager.toolIndex][0][0] or x > \
+                self.edgedPos[self.captureManager.toolIndex][1][0] or y < \
+                self.edgedPos[self.captureManager.toolIndex][0][1] or y > \
+                self.edgedPos[self.captureManager.toolIndex][1][1]:
+            return
+
+        # add approximation function
+        xedged = x - self.edgedPos[self.captureManager.toolIndex][0][0]
+        yedged = y - self.edgedPos[self.captureManager.toolIndex][0][1]
+        xedged, yedged = self.processingTools.getNearestPos(self.edged[self.captureManager.toolIndex], (xedged, yedged))
+        x = xedged + self.edgedPos[self.captureManager.toolIndex][0][0]
+        y = yedged + self.edgedPos[self.captureManager.toolIndex][0][1]
+
+        self.secondMeasurePoint = (x, y)
+        frame = self.mixedFrame[self.captureManager.toolIndex].copy()
+        self.captureManager.drawArrow(frame, self.firstMeasurePoint, (x, y))
+        self.setImagePreview(frame)
+        self.measureDistance()
+        self.enable('measure')
+
+
+
+    def resetCrop(self,event=None):
+        print("reset")
+        self.setImagePreview(self.frame)
+        self.measurement()
+
+
 
     def coloredPixel(self):
 
@@ -377,7 +480,7 @@ class SetupInterface(Ui_SetupWindow):
         QtCore.QObject.connect(self.patternThresh[self.captureManager.toolIndex], QtCore.SIGNAL("sliderPressed()"),
                                self.detectPattern)
 
-    def enable(self, command):
+    def enable(self, command=''):
         if command == 'removePixel':
             self.ImagePreview.mouseMoveEvent = self.defaultMouseMove
             self.ImagePreview.mouseDoubleClickEvent = self.defaultDoubleClick
@@ -407,6 +510,14 @@ class SetupInterface(Ui_SetupWindow):
             self.ImagePreview.mousePressEvent = self.startCropping
             self.ImagePreview.mouseReleaseEvent = self.stopCropping
             self.statusbar.showMessage("select the area of interest using the mouse right button")
+
+        elif command == 'measure':
+
+            self.ImagePreview.mouseMoveEvent = self.defaultMouseMove
+            self.ImagePreview.mouseDoubleClickEvent = self.resetCrop
+            self.ImagePreview.mousePressEvent = self.selectMeasurePointFirst
+            self.ImagePreview.mouseReleaseEvent = self.defaultMouseRelease
+            self.statusbar.showMessage("select the first point of measurement")
 
         else:
             self.ImagePreview.mouseMoveEvent = self.defaultMouseMove
