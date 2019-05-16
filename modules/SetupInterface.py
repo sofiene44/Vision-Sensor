@@ -14,6 +14,7 @@ import time
 class SetupInterface(Ui_SetupWindow):
     def __init__(self, captureManager):
         super(SetupInterface, self).__init__()
+        self.measurePoints = ((0, 0), (0, 0))
         self.config = ConfigParser()
         self.frame = None
         self.capture = True
@@ -21,8 +22,8 @@ class SetupInterface(Ui_SetupWindow):
         self.edged = [None] * 5
         self.edgedPos = [None] * 5
         self.mixedFrame = [None] * 5
-        self.firstMeasurePoint=(0, 0)
-        self.secondMeasurePoint=(0, 0)
+        self.firstMeasurePoint = (0, 0)
+        self.secondMeasurePoint = (0, 0)
         self.ColorThresh = [None] * 5
         self.pixelColor = [None] * 5
         self.measurementThresh = [None] * 5
@@ -76,6 +77,7 @@ class SetupInterface(Ui_SetupWindow):
         self.cropped = self.frame
         self.loadConfig()
         self.setImagePreview(self.frame)
+        self.statusbar.showMessage("")
 
     def setToolIndex1(self):
         self.captureManager.toolIndex = 1
@@ -152,7 +154,6 @@ class SetupInterface(Ui_SetupWindow):
 
     def measureDistance(self):
 
-
         self.setImagePreview(self.frame)
         self.enable('cropArea')
         # xdistance, ydistance, edgedMeasure = self.processingTools.measure(
@@ -160,6 +161,7 @@ class SetupInterface(Ui_SetupWindow):
         #     True, True)
         if self.mixedFrame[self.captureManager.toolIndex] is None:
             return
+
         xdistance = abs(self.firstMeasurePoint[0] - self.secondMeasurePoint[0])
         ydistance = abs(self.firstMeasurePoint[1] - self.secondMeasurePoint[1])
         distance = (xdistance ** 2 + ydistance ** 2) ** (1 / 2)
@@ -167,6 +169,11 @@ class SetupInterface(Ui_SetupWindow):
 
         frame = self.mixedFrame[self.captureManager.toolIndex].copy()
         self.captureManager.drawArrow(frame, self.firstMeasurePoint, self.secondMeasurePoint)
+        self.captureManager.drawArrow(frame, self.firstMeasurePoint,
+                                      (self.secondMeasurePoint[0], self.firstMeasurePoint[1]), (0, 0, 255))
+        self.captureManager.drawArrow(frame, self.secondMeasurePoint,
+                                      (self.secondMeasurePoint[0], self.firstMeasurePoint[1]), (0, 255, 0))
+
         # frame=self.processingTools.replacePartFrame(self.frame,self.edged[self.captureManager.toolIndex], self.edgedPos[self.captureManager.toolIndex][0][0],self.edgedPos[self.captureManager.toolIndex][0][1])
         # frame=self.processingTools.replacePartFrame(self.frame,edgedMeasure, self.edgedPos[self.captureManager.toolIndex][0][0],self.edgedPos[self.captureManager.toolIndex][0][1])
         self.setImagePreview(frame)
@@ -270,7 +277,19 @@ class SetupInterface(Ui_SetupWindow):
                 self.captureManager.saveImage(self.masterPattern, name)
         self.setImagePreview(self.frame)
 
-    def startCropping(self, event):
+    def startCropping(self, event=None):
+
+        if self.edgedPos[self.captureManager.toolIndex] is not None and event is None:
+            self.enable('measure')
+            (self.firstMeasurePoint, self.secondMeasurePoint) = self.measurePoints
+            self.startPoint = self.edgedPos[self.captureManager.toolIndex][0]
+            self.dragging = True
+            self.stopCropping()
+            return
+
+        if event is None:
+            return
+
         x = event.pos().x()
         y = event.pos().y()
         self.dragging = True
@@ -288,12 +307,18 @@ class SetupInterface(Ui_SetupWindow):
         else:
             self.setImagePreview(self.frame)
 
-    def stopCropping(self, event):
+    def stopCropping(self, event=None):
 
         self.ImagePreview.mouseMoveEvent = self.defaultMouseMove
-        x = event.pos().x()
-        y = event.pos().y()
+        if event is not None:
+            x = event.pos().x()
+            y = event.pos().y()
+        else:
+            x = self.edgedPos[self.captureManager.toolIndex][1][0]
+            y = self.edgedPos[self.captureManager.toolIndex][1][1]
+
         frame = self.frame.copy()
+
         if (x, y) == self.startPoint:
             return
         if self.dragging:
@@ -347,7 +372,6 @@ class SetupInterface(Ui_SetupWindow):
         self.ImagePreview.mouseMoveEvent = self.drawArrow
         self.ImagePreview.mousePressEvent = self.selectMeasurePointSecond
 
-
     def drawArrow(self, event):
 
         x = event.pos().x()
@@ -361,9 +385,13 @@ class SetupInterface(Ui_SetupWindow):
         else:
             self.setImagePreview(self.mixedFrame[self.captureManager.toolIndex])
 
-    def selectMeasurePointSecond(self, event):
-        x = event.pos().x()
-        y = event.pos().y()
+    def selectMeasurePointSecond(self, event=None):
+        if event is not None:
+            x = event.pos().x()
+            y = event.pos().y()
+        else:
+            x=self.secondMeasurePoint[0]
+            y=self.secondMeasurePoint[1]
         if x < self.edgedPos[self.captureManager.toolIndex][0][0] or x > \
                 self.edgedPos[self.captureManager.toolIndex][1][0] or y < \
                 self.edgedPos[self.captureManager.toolIndex][0][1] or y > \
@@ -384,14 +412,11 @@ class SetupInterface(Ui_SetupWindow):
         self.measureDistance()
         self.enable('measure')
 
-
-
-    def resetCrop(self,event=None):
+    def resetCrop(self, event=None):
         print("reset")
+        self.edgedPos[self.captureManager.toolIndex] = None
         self.setImagePreview(self.frame)
         self.measurement()
-
-
 
     def coloredPixel(self):
 
@@ -448,6 +473,8 @@ class SetupInterface(Ui_SetupWindow):
         # self.enable('removePixel')
 
     def patternDetection(self):
+        self.statusbar.showMessage("")
+
         try:
             self.masterPattern = self.captureManager.loadFrame('./Masters/MasterPattern' +
                                                                str(self.captureManager.programNumber) + '.jpg')
@@ -564,28 +591,32 @@ class SetupInterface(Ui_SetupWindow):
 
                 self.config.set(tool, "tool thresh", str(self.ColorThresh[toolIndex].value()))
                 self.config.set(tool, "pixel color", str(self.pixelColor[toolIndex]))
-                self.config.set(tool, "ignored pixels", "None")
+                self.config.set(tool, "area of interest", "None")
+                self.config.set(tool, "measurement points", str(None))
                 self.config.set(tool, "Result", str(self.Results[toolIndex]))
 
             elif self.toolList[toolIndex] == 'measurement Tool' and self.measurementThresh[toolIndex].isEnabled():
 
                 self.config.set(tool, "tool thresh", str(self.measurementThresh[toolIndex].value()))
                 self.config.set(tool, "pixel color", "None")
-                self.config.set(tool, "ignored pixels", str(self.ignoredPixels[toolIndex]))
+                self.config.set(tool, "area of interest", str(self.edgedPos[toolIndex]))
+                self.config.set(tool, "measurement points", str((self.firstMeasurePoint, self.secondMeasurePoint)))
                 self.config.set(tool, "Result", str(self.Results[toolIndex]))
 
             elif self.toolList[toolIndex] == 'Pattern Detection Tool' and self.patternThresh[toolIndex].isEnabled():
 
                 self.config.set(tool, "tool thresh", str(self.patternThresh[toolIndex].value()))
                 self.config.set(tool, "pixel color", "None")
-                self.config.set(tool, "ignored pixels", "None")
+                self.config.set(tool, "area of interest", "None")
+                self.config.set(tool, "measurement points", str(None))
                 self.config.set(tool, "Result", str(self.Results[toolIndex]))
 
             else:
                 self.config.set(tool, "tool name", 'Tool' + str(toolIndex))
                 self.config.set(tool, "tool thresh", str(0))
                 self.config.set(tool, "pixel color", "None")
-                self.config.set(tool, "ignored pixels", "None")
+                self.config.set(tool, "area of interest", "None")
+                self.config.set(tool, "measurement points", str(None))
                 self.config.set(tool, "Result", "None")
 
         with open('config/config' + str(self.captureManager.programNumber) + '.ini', 'w') as configfile:
@@ -610,7 +641,6 @@ class SetupInterface(Ui_SetupWindow):
         if self.config.get("Tool1_Settings", "tool name") == 'Tool1':
             self.Enable1.setChecked(False)
 
-
         else:
             self.Enable1.setChecked(True)
             self.ThreshSlider1.setValue(int(self.config.get("Tool1_Settings", "tool thresh")))
@@ -624,6 +654,7 @@ class SetupInterface(Ui_SetupWindow):
 
         if self.config.get("Tool3_Settings", "tool name") == 'Tool3':
             self.Enable3.setChecked(False)
+
         else:
             self.Enable3.setChecked(True)
             self.ThreshSlider3.setValue(int(self.config.get("Tool3_Settings", "tool thresh")))
@@ -646,10 +677,12 @@ class SetupInterface(Ui_SetupWindow):
                 self.coloredPixel()
 
             elif self.config.get(tool, "tool name") == 'measurement Tool':
-                self.ignoredPixels[toolIndex] = ast.literal_eval(self.config.get(tool, "ignored pixels"))
+                self.edgedPos[toolIndex] = ast.literal_eval(self.config.get(tool, "area of interest"))
+                self.measurePoints = ast.literal_eval(self.config.get(tool, "measurement points"))
                 self.Results[toolIndex] = ast.literal_eval(self.config.get(tool, "result"))
                 self.measurementThresh[toolIndex] = int(self.config.get(tool, 'tool thresh'))
                 self.captureManager.toolIndex = toolIndex
+                self.startCropping()
                 self.measurement()
 
             elif self.config.get(tool, "tool name") == 'Pattern Detection Tool':
