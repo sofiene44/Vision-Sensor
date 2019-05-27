@@ -55,6 +55,7 @@ class MainWindowUi(Ui_MainWindow):
         QtCore.QObject.connect(self.ThreshSlider4, QtCore.SIGNAL("valueChanged(int)"),
                                self.setToolIndex4)
 
+
     def setToolIndex1(self):
         self.captureManager.toolIndex = 1
 

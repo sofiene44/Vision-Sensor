@@ -3,6 +3,8 @@ from modules.MainWindowUi import MainWindowUi
 from modules.CustomSlots import CustomSlots
 from PyQt4 import QtGui
 
+
+
 import time
 
 
@@ -81,7 +83,7 @@ import time
 #
 #
 #             # test execution time for a single test
-#             if self._endTime is None:
+#             if self._dendTime is None:
 #                 self._endTime = time.time()
 #                 print("execution time =  ", self._endTime - self._startTime)
 #
@@ -97,9 +99,5 @@ if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
     captureManager = CaptureManager(0)
     mainWindowUi = MainWindowUi(captureManager)
-    # mainWindowUi.MainWindow = CustomSlots(mainWindowUi)
-    # mainWindowUi.setupUi(mainWindowUi.MainWindow)
-    # mainWindowUi.MainWindow.show()
-
     sys.exit(app.exec_())
 

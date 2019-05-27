@@ -74,6 +74,7 @@ class SetupInterface(Ui_SetupWindow):
         self.ImagePreview.mouseReleaseEvent = self.DoNothing
         self.ImagePreview.mouseMoveEvent = self.DoNothing
         self.setupWindow.keyPressEvent = self.DoNothing
+
         self.cropped = self.frame
         self.loadConfig()
         self.setImagePreview(self.frame)
@@ -374,6 +375,7 @@ class SetupInterface(Ui_SetupWindow):
 
     def drawArrow(self, event):
 
+        self.statusbar.showMessage("select the second point of measurement")
         x = event.pos().x()
         y = event.pos().y()
 
