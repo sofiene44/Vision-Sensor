@@ -1,5 +1,3 @@
-
-
 from GUI.mainFrameWindow import *
 from modules.CaptureManager import CaptureManager
 from modules.ToolSettingsInterface import ToolSettingsInterface
@@ -16,12 +14,15 @@ class MainWindowUi(Ui_MainWindow):
 
     def __init__(self, captureManager):
         super(MainWindowUi, self).__init__()
+        self.mixedFrame = [None] * 5
+        self.measurementPoints = [None] * 5
+        self.areaOfInterest = [None] * 5
         self.MainWindow = CustomSlots(self)
         self.setupUi(self.MainWindow)
         self.MainWindow.show()
-        self.frame=None
+        self.frame = None
         self.captureManager = captureManager
-        self.config=ConfigParser()
+        self.config = ConfigParser()
         self.processingTools = ProcessingTools()
 
         self.threshValue = [None] * 5
@@ -55,7 +56,6 @@ class MainWindowUi(Ui_MainWindow):
         QtCore.QObject.connect(self.ThreshSlider4, QtCore.SIGNAL("valueChanged(int)"),
                                self.setToolIndex4)
 
-
     def setToolIndex1(self):
         self.captureManager.toolIndex = 1
 
@@ -68,11 +68,6 @@ class MainWindowUi(Ui_MainWindow):
     def setToolIndex4(self):
         self.captureManager.toolIndex = 4
 
-
-
-
-
-
     # load an existing frame, takes Frame path as argument,default frame is replaced by the read frame
 
     def refreshFrame(self):
@@ -83,22 +78,22 @@ class MainWindowUi(Ui_MainWindow):
         self.captureManager.cameraRelease()
         if self.captureManager.toolIndex is None:
             return
-        if self.config.get("Tool"+str(self.captureManager.toolIndex)+"_Settings", "tool name") == 'Color Pixel Tool':
+        if self.config.get("Tool" + str(self.captureManager.toolIndex) + "_Settings",
+                           "tool name") == 'Color Pixel Tool':
             self.coloredPixel()
 
-        elif self.config.get("Tool"+str(self.captureManager.toolIndex)+"_Settings", "tool name") == 'measurement Tool':
+        elif self.config.get("Tool" + str(self.captureManager.toolIndex) + "_Settings",
+                             "tool name") == 'measurement Tool':
             self.measurement()
 
-        elif self.config.get("Tool"+str(self.captureManager.toolIndex)+"_Settings", "tool name") == 'Pattern Detection Tool':
+        elif self.config.get("Tool" + str(self.captureManager.toolIndex) + "_Settings",
+                             "tool name") == 'Pattern Detection Tool':
             self.patternDetection()
-
 
     # show frame in specific window ,default frame and window name are shown if not specified
     def setImagePreview(self, frame):
         temp = self.captureManager.makePixmap(frame)
         self.ImagePreview.setPixmap(QtGui.QPixmap(temp))
-
-
 
     def showSetup(self):
         self.SetupInterface = SetupInterface(self.captureManager)
@@ -106,12 +101,14 @@ class MainWindowUi(Ui_MainWindow):
     def loadConfig(self):
         self.config.read('config/config' + str(self.captureManager.programNumber) + '.ini')
 
-        self.threshValue=[None] * 5
+        self.threshValue = [None] * 5
         self.ColorThresh = [None] * 5
         self.pixelColor = [None] * 5
         self.measurementThresh = [None] * 5
         self.patternThresh = [None] * 5
         self.toolList = [None] * 5
+        self.areaOfInterest = [None] * 5
+        self.measurementPoints = [None] * 5
         self.ignoredPixels = [None] * 5
         self.Results = [None] * 5
 
@@ -153,60 +150,119 @@ class MainWindowUi(Ui_MainWindow):
             self.Enable4.setChecked(True)
 
         for toolIndex in range(1, 5):
-            tool="Tool"+str(toolIndex)+"_Settings"
-            if self.config.get(tool,"tool name") == 'Color Pixel Tool':
-                pixelColor = self.config.get(tool,"pixel color")
+            self.captureManager.toolIndex = toolIndex
+            tool = "Tool" + str(toolIndex) + "_Settings"
+            self.toolList[toolIndex] = self.config.get(tool, "tool name")
+            if self.config.get(tool, "tool name") == 'Color Pixel Tool':
+                pixelColor = self.config.get(tool, "pixel color")
                 self.pixelColor[toolIndex] = [int(e.strip('[],')) for e in pixelColor.split(' ')]
                 self.Results[toolIndex] = int(self.config.get(tool, "result"))
-                self.threshValue[toolIndex]=int(self.config.get(tool, 'tool thresh'))
+                self.threshValue[toolIndex] = int(self.config.get(tool, 'tool thresh'))
+                self.coloredPixel()
 
             elif self.config.get(tool, "tool name") == 'measurement Tool':
-                self.ignoredPixels[toolIndex]=ast.literal_eval(self.config.get(tool, "ignored pixels"))
+                self.areaOfInterest[toolIndex] = ast.literal_eval(self.config.get(tool, "area of interest"))
                 self.Results[toolIndex] = ast.literal_eval(self.config.get(tool, "result"))
                 self.threshValue[toolIndex] = int(self.config.get(tool, 'tool thresh'))
+                self.measurementPoints[toolIndex] = ast.literal_eval(self.config.get(tool, "measurement points"))
+                self.measurement()
 
             elif self.config.get(tool, "tool name") == 'Pattern Detection Tool':
                 self.threshValue[toolIndex] = int(self.config.get(tool, 'tool thresh'))
                 self.Results[toolIndex] = int(self.config.get(tool, "result"))
-
+                self.patternDetection()
 
     def countColorPixels(self):
+        if self.frame is None:
+            return
 
         if self.pixelColor[self.captureManager.toolIndex] is not None:
             pixels, frame = self.processingTools.countColorPixel(self.frame, self.pixelColor[
-                self.captureManager.toolIndex],  self.threshValue[self.captureManager.toolIndex])
+                self.captureManager.toolIndex], self.threshValue[self.captureManager.toolIndex])
 
             self.setImagePreview(frame)
-            print(pixels)
+
             self.NewResults[self.captureManager.toolIndex] = pixels
         else:
             self.setImagePreview(self.frame)
 
-
     def measureDistance(self):
+        if self.frame is None:
+            return
 
-        xdistance, ydistance, edgedMeasure = self.processingTools.measure(
-            self.edged[self.captureManager.toolIndex], self.threshValue[self.captureManager.toolIndex], True, True)
-        self.setImagePreview(edgedMeasure)
-        self.NewResults[self.captureManager.toolIndex] = (xdistance, ydistance)
+        # xdistance, ydistance, edgedMeasure = self.processingTools.measure(
+        #     self.edged[self.captureManager.toolIndex], self.threshValue[self.captureManager.toolIndex], True, True)
+        # self.setImagePreview(edgedMeasure)
+        # self.NewResults[self.captureManager.toolIndex] = (xdistance, ydistance)
 
+        startPoint = self.areaOfInterest[self.captureManager.toolIndex][0]
+        endPoint = self.areaOfInterest[self.captureManager.toolIndex][1]
+
+        frame = self.frame.copy()
+        self.cropped = self.processingTools.cropFrame(self.frame, startPoint[0], startPoint[1],
+                                                      (endPoint[1] - startPoint[1]), (endPoint[0] - startPoint[0]))
+        self.edged[self.captureManager.toolIndex] = self.processingTools.detectEdges(self.cropped, self.threshValue[
+            self.captureManager.toolIndex] / 100)
+
+        edged3ch = self.processingTools.gray2BGR(self.edged[self.captureManager.toolIndex])
+        self.mixedFrame[self.captureManager.toolIndex] = self.processingTools.replacePartFrame(frame, edged3ch,
+                                                                                               min(endPoint[0],
+                                                                                                   startPoint[0]),
+                                                                                               min(endPoint[1],
+                                                                                                   startPoint[1]))
+
+        firstMeasurePoint = self.measurementPoints[self.captureManager.toolIndex][0]
+        secondMeasurePoint = self.measurementPoints[self.captureManager.toolIndex][1]
+
+        xedged = firstMeasurePoint[0] - startPoint[0]
+        yedged = firstMeasurePoint[1] - startPoint[1]
+        xedged, yedged = self.processingTools.getNearestPos(self.edged[self.captureManager.toolIndex], (xedged, yedged))
+
+        firstMeasurePoint = (xedged + startPoint[0], yedged + startPoint[1])
+        # firstMeasurePoint[0] = xedged + startPoint[0]
+        # firstMeasurePoint[1] = yedged + startPoint[1]
+
+        xedged = secondMeasurePoint[0] - startPoint[0]
+        yedged = secondMeasurePoint[1] - startPoint[1]
+        xedged, yedged = self.processingTools.getNearestPos(self.edged[self.captureManager.toolIndex], (xedged, yedged))
+
+        secondMeasurePoint = (xedged + startPoint[0], yedged + startPoint[1])
+        # secondMeasurePoint[0] = xedged + startPoint[0]
+        # secondMeasurePoint[1] = yedged + startPoint[1]
+
+        xdistance = abs(firstMeasurePoint[0] - secondMeasurePoint[0])
+        ydistance = abs(firstMeasurePoint[1] - secondMeasurePoint[1])
+        distance = (xdistance ** 2 + ydistance ** 2) ** (1 / 2)
+
+        frame = self.mixedFrame[self.captureManager.toolIndex].copy()
+        self.captureManager.drawArrow(frame, firstMeasurePoint, secondMeasurePoint)
+        self.captureManager.drawArrow(frame, firstMeasurePoint,
+                                      (secondMeasurePoint[0], firstMeasurePoint[1]), (0, 0, 255))
+        self.captureManager.drawArrow(frame, secondMeasurePoint,
+                                      (secondMeasurePoint[0], firstMeasurePoint[1]), (0, 255, 0))
+
+        self.setImagePreview(frame)
+        self.NewResults[self.captureManager.toolIndex] = (xdistance, ydistance, distance)
 
     def detectPattern(self):
+        if self.frame is None:
+            return
+
         self.setImagePreview(self.frame)
 
-        maxThresh = self.patternThresh[self.captureManager.toolIndex].maximum()
+        # maxThresh = self.patternThresh[self.captureManager.toolIndex].maximum()
         pos, pattern = self.processingTools.detectPattern(
             self.frame, self.masterPattern,
-            (maxThresh - self.patternThresh[self.captureManager.toolIndex].value()) / 100,
+            (100 - self.threshValue[self.captureManager.toolIndex]) / 100,
             True)
         self.setImagePreview(pattern)
-        print("detected patterns= ", len(pos))
+
         self.NewResults[self.captureManager.toolIndex] = len(pos)
 
-
     def coloredPixel(self):
+        if self.frame is not None:
+            self.setImagePreview(self.frame)
 
-        self.setImagePreview(self.frame)
         if self.captureManager.toolIndex == 1:
             self.ColorThresh[self.captureManager.toolIndex] = self.ThreshSlider1
         elif self.captureManager.toolIndex == 2:
@@ -231,17 +287,16 @@ class MainWindowUi(Ui_MainWindow):
             self.measurementThresh[self.captureManager.toolIndex] = self.ThreshSlider3
         elif self.captureManager.toolIndex == 4:
             self.measurementThresh[self.captureManager.toolIndex] = self.ThreshSlider4
-        self.edged[self.captureManager.toolIndex] = self.processingTools.detectEdges(self.frame)
 
-        self.setImagePreview(self.edged[self.captureManager.toolIndex])
         self.measureDistance()
+        if self.frame is not None:
+            self.compare()
+
         QtCore.QObject.connect(self.measurementThresh[self.captureManager.toolIndex],
                                QtCore.SIGNAL("valueChanged(int)"),
                                self.compare)
         QtCore.QObject.connect(self.measurementThresh[self.captureManager.toolIndex], QtCore.SIGNAL("sliderPressed()"),
                                self.measureDistance)
-
-
 
     def patternDetection(self):
         try:
@@ -266,19 +321,15 @@ class MainWindowUi(Ui_MainWindow):
         QtCore.QObject.connect(self.patternThresh[self.captureManager.toolIndex], QtCore.SIGNAL("sliderPressed()"),
                                self.detectPattern)
 
-
     def compare(self):
-        oldResult=self.Results[self.captureManager.toolIndex]
-        newResult=self.NewResults[self.captureManager.toolIndex]
-        if type(newResult) is int:
+        threshSensible = [0, self.ThreshSlider1.value(), self.ThreshSlider2.value(), self.ThreshSlider3.value(),
+                          self.ThreshSlider4.value()]
+        oldResult = self.Results[self.captureManager.toolIndex]
+        newResult = self.NewResults[self.captureManager.toolIndex]
+        print(self.toolList[self.captureManager.toolIndex])
+        if type(oldResult) is int:
             print("new ", newResult, " old ", oldResult)
         else:
-            for i in range(0,len(newResult)):
-                print("new ",newResult[i]," old ",oldResult[i])
-
-
-
-
-
-
-
+            for i in range(0, len(oldResult)):
+                print("new ", newResult[i], " old ", oldResult[i])
+            print(threshSensible[self.captureManager.toolIndex])

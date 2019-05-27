@@ -2,6 +2,7 @@ from modules.CaptureManager import CaptureManager
 
 from configparser import ConfigParser
 import ast
+from cv2 import findNonZero
 
 from GUI.setupWindow import *
 from modules.CustomSlots import CustomSlots
@@ -100,6 +101,7 @@ class SetupInterface(Ui_SetupWindow):
 
             self.captureManager.setCamera(0)
             self.frame = self.captureManager.readFrame()
+
             self.setImagePreview(self.frame)
             self.captureManager.cameraRelease()
 
@@ -154,7 +156,7 @@ class SetupInterface(Ui_SetupWindow):
         self.countColorPixels()
 
     def measureDistance(self):
-
+        self.stopCropping()
         self.setImagePreview(self.frame)
         self.enable('cropArea')
         # xdistance, ydistance, edgedMeasure = self.processingTools.measure(
@@ -327,7 +329,14 @@ class SetupInterface(Ui_SetupWindow):
                                                           (y - self.startPoint[1]), (x - self.startPoint[0]))
 
             # self.captureManager.drawRectangle(frame, (x, y), self.startPoint, (0, 0, 255))
-            self.edged[self.captureManager.toolIndex] = self.processingTools.detectEdges(self.cropped)
+            if self.measurementThresh[self.captureManager.toolIndex] is not None:
+                self.measurementThreshValue[self.captureManager.toolIndex] = self.measurementThresh[self.captureManager.toolIndex].value()
+                print(self.measurementThreshValue[self.captureManager.toolIndex])
+
+
+
+            self.edged[self.captureManager.toolIndex] = self.processingTools.detectEdges(self.cropped,self.measurementThreshValue[self.captureManager.toolIndex]/100)
+            print(self.measurementThreshValue[self.captureManager.toolIndex]/100)
             edged3ch = self.processingTools.gray2BGR(self.edged[self.captureManager.toolIndex])
             self.mixedFrame[self.captureManager.toolIndex] = self.processingTools.replacePartFrame(frame, edged3ch,
                                                                                                    min(x,
@@ -339,7 +348,7 @@ class SetupInterface(Ui_SetupWindow):
                                                             (max(x, self.startPoint[0]), max(y, self.startPoint[1])))
             frame = self.mixedFrame[self.captureManager.toolIndex]
             self.enable('measure')
-            from cv2 import findNonZero
+
             if findNonZero(self.edged[self.captureManager.toolIndex]) is None:
                 self.resetCrop()
                 return
@@ -463,7 +472,7 @@ class SetupInterface(Ui_SetupWindow):
         toolName.setText("measurement Tool")
         self.ignoredPixels[self.captureManager.toolIndex] = []
         self.toolList[self.captureManager.toolIndex] = "measurement Tool"
-        self.measurementThresh[self.captureManager.toolIndex].setMaximum(max(self.cropped.shape))
+        self.measurementThresh[self.captureManager.toolIndex].setMaximum(100)
 
         self.setImagePreview(self.frame)
         QtCore.QObject.connect(self.measurementThresh[self.captureManager.toolIndex],
@@ -627,10 +636,10 @@ class SetupInterface(Ui_SetupWindow):
     def loadConfig(self):
         self.config.read('config/config' + str(self.captureManager.programNumber) + '.ini')
 
-        self.ColorThresh = [None] * 5
         self.pixelColor = [None] * 5
-        self.measurementThresh = [None] * 5
-        self.patternThresh = [None] * 5
+        self.ColorThreshValue = [None] * 5
+        self.measurementThreshValue = [None] * 5
+        self.patternThreshValue = [None] * 5
         self.toolList = [None] * 5
         self.ignoredPixels = [None] * 5
         self.Results = [None] * 5
@@ -674,7 +683,7 @@ class SetupInterface(Ui_SetupWindow):
                 pixelColor = self.config.get(tool, "pixel color")
                 self.pixelColor[toolIndex] = [int(e.strip('[],')) for e in pixelColor.split(' ')]
                 self.Results[toolIndex] = int(self.config.get(tool, "result"))
-                self.ColorThresh[toolIndex] = int(self.config.get(tool, 'tool thresh'))
+                self.ColorThreshValue[toolIndex] = int(self.config.get(tool, 'tool thresh'))
                 self.captureManager.toolIndex = toolIndex
                 self.coloredPixel()
 
@@ -682,13 +691,13 @@ class SetupInterface(Ui_SetupWindow):
                 self.edgedPos[toolIndex] = ast.literal_eval(self.config.get(tool, "area of interest"))
                 self.measurePoints = ast.literal_eval(self.config.get(tool, "measurement points"))
                 self.Results[toolIndex] = ast.literal_eval(self.config.get(tool, "result"))
-                self.measurementThresh[toolIndex] = int(self.config.get(tool, 'tool thresh'))
+                self.measurementThreshValue[toolIndex] = int(self.config.get(tool, 'tool thresh'))
                 self.captureManager.toolIndex = toolIndex
                 self.startCropping()
                 self.measurement()
 
             elif self.config.get(tool, "tool name") == 'Pattern Detection Tool':
-                self.patternThresh[toolIndex] = int(self.config.get(tool, 'tool thresh'))
+                self.patternThreshValue[toolIndex] = int(self.config.get(tool, 'tool thresh'))
                 self.Results[toolIndex] = int(self.config.get(tool, "result"))
                 self.captureManager.toolIndex = toolIndex
                 self.patternDetection()

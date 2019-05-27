@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="312f9fde-e7e6-4101-94fd-e48223bd1d94" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/raspberryPiVisionSensor.py" afterDir="false" />
+    <list default="true" id="312f9fde-e7e6-4101-94fd-e48223bd1d94" name="Default Changelist" comment="adjust config files and save config method to new measurement">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config0.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config0.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config1.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config1.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config2.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config2.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/CaptureManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/CaptureManager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/MainWindowUi.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/MainWindowUi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/SetupInterface.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/SetupInterface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/testClass.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testClass.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+            <state relative-caret-position="105">
+              <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -37,7 +34,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/raspberryPiVisionSensor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="195">
               <caret line="13" selection-start-line="13" selection-end-line="13" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -46,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/MainWindowUi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="165">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
               <folding>
                 <element signature="e#2#35#0" expanded="true" />
               </folding>
@@ -59,22 +56,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/CaptureManager.py">
+        <entry file="file://$PROJECT_DIR$/config/config0.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="31" selection-start-line="31" selection-end-line="31" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="330">
+              <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/SetupInterface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="499">
-              <caret line="377" column="53" selection-start-line="377" selection-start-column="53" selection-end-line="377" selection-end-column="53" />
+            <state relative-caret-position="-2485">
+              <caret line="102" column="51" selection-start-line="102" selection-start-column="51" selection-end-line="102" selection-end-column="51" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -83,10 +77,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/CaptureManager.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="24" lean-forward="true" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/ProcessingTools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1245">
-              <caret line="85" column="25" selection-start-line="85" selection-start-column="25" selection-end-line="85" selection-end-column="25" />
+            <state relative-caret-position="236">
+              <caret line="27" column="14" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="14" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -97,17 +103,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GUI/mainFrameWindow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/config0.ini">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="45" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+            <state relative-caret-position="261">
+              <caret line="116" column="62" lean-forward="true" selection-start-line="116" selection-start-column="62" selection-end-line="116" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -115,8 +112,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/config1.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+            <state relative-caret-position="120">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -132,20 +129,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.copy</find>
-      <find>prin</find>
-      <find>expect</find>
-      <find>self.statusbar.showMessage</find>
-      <find>measurementThresh</find>
-      <find>toolName</find>
-      <find>pressedOnce</find>
-      <find>self.edged</find>
       <find>self.pixelColor</find>
       <find>pixelColor</find>
       <find>self.captureManager.pixelColor</find>
       <find>value</find>
       <find>Enable1</find>
-      <find>print</find>
       <find>showFrame</find>
       <find />
       <find>save</find>
@@ -162,11 +150,17 @@
       <find>thres</find>
       <find>.value</find>
       <find>make</find>
+      <find>thresh</find>
+      <find>measurementThresh</find>
+      <find>self.measurementThres</find>
+      <find>self.firstMeasurePoint</find>
+      <find>ThreshValue</find>
+      <find>setIma</find>
+      <find>print</find>
+      <find>meas</find>
+      <find>cropfr</find>
     </findStrings>
     <replaceStrings>
-      <replace>self.selected[</replace>
-      <replace>self.selected</replace>
-      <replace>self.height</replace>
       <replace>self.width</replace>
       <replace>_mouseColorSelect</replace>
       <replace>cv2.</replace>
@@ -194,6 +188,9 @@
       <replace />
       <replace>Selection</replace>
       <replace>mixedFrame[self.captureManager.toolIndex]</replace>
+      <replace>firstMeasurePoint</replace>
+      <replace>secondMeasurePoint</replace>
+      <replace>ThreshSlider</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -238,13 +235,13 @@
         <option value="$PROJECT_DIR$/config/config4.ini" />
         <option value="$PROJECT_DIR$/config/config5.ini" />
         <option value="$PROJECT_DIR$/config/ncjdsnvd.sh" />
-        <option value="$PROJECT_DIR$/modules/ProcessingTools.py" />
         <option value="$PROJECT_DIR$/config/config0.ini" />
-        <option value="$PROJECT_DIR$/modules/MainWindowUi.py" />
-        <option value="$PROJECT_DIR$/modules/CaptureManager.py" />
         <option value="$PROJECT_DIR$/testClass.py" />
         <option value="$PROJECT_DIR$/raspberryPiVisionSensor.py" />
+        <option value="$PROJECT_DIR$/modules/ProcessingTools.py" />
         <option value="$PROJECT_DIR$/modules/SetupInterface.py" />
+        <option value="$PROJECT_DIR$/modules/CaptureManager.py" />
+        <option value="$PROJECT_DIR$/modules/MainWindowUi.py" />
       </list>
     </option>
   </component>
@@ -466,10 +463,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.testClass" />
+        <item itemvalue="Python.SetupInterface" />
         <item itemvalue="Python.MainWindowUi" />
         <item itemvalue="Python.raspberryPiVisionSensor" />
         <item itemvalue="Python.CaptureManager" />
-        <item itemvalue="Python.SetupInterface" />
       </list>
     </recent_temporary>
   </component>
@@ -589,7 +586,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557999486277</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="adjust config files and save config method to new measurement">
+      <created>1558944543708</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1558944543708</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView">
@@ -886,9 +890,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/testClass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config1.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/raspberryPiVisionSensor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="195">
           <caret line="13" selection-start-line="13" selection-end-line="13" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
@@ -896,73 +917,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/mainFrameWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="116" column="62" lean-forward="true" selection-start-line="116" selection-start-column="62" selection-end-line="116" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modules/ProcessingTools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1245">
-          <caret line="85" column="25" selection-start-line="85" selection-start-column="25" selection-end-line="85" selection-end-column="25" />
+        <state relative-caret-position="236">
+          <caret line="27" column="14" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="14" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GUI/mainFrameWindow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config0.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="45" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config1.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/CaptureManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="360">
+          <caret line="24" column="24" lean-forward="true" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/MainWindowUi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#2#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testClass.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/SetupInterface.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="377" column="53" selection-start-line="377" selection-start-column="53" selection-end-line="377" selection-end-column="53" />
+        <state relative-caret-position="-2485">
+          <caret line="102" column="51" selection-start-line="102" selection-start-column="51" selection-end-line="102" selection-end-column="51" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config0.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/MainWindowUi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#2#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
