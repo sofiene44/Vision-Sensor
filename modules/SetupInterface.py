@@ -13,9 +13,10 @@ import time
 
 
 class SetupInterface(Ui_SetupWindow):
-    def __init__(self, captureManager):
+    def __init__(self, captureManager,parent):
         super(SetupInterface, self).__init__()
 
+        self.parent=parent
         self.masterPattern = None
         self.measurePoints = ((0, 0), (0, 0))
         self.config = ConfigParser()
@@ -584,6 +585,7 @@ class SetupInterface(Ui_SetupWindow):
 
     def nextPressedTwice(self):
         self.saveSettings()
+        self.parent.loadConfig()
         self.setupWindow.close()
 
     def PreviousPressedOnce(self):

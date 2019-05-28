@@ -20,7 +20,7 @@ class CaptureManager(object):
         self._frame = cv2.imread(path)
         h, w, _ = self._frame.shape
         frame = self._frame[(h // 2) - 240:(h // 2) + 240, (w // 2) - 320:(w // 2) + 320].copy()
-        return frame
+        return self._frame
 
     def readFrame(self):
         if self._camera is not None:
@@ -28,7 +28,7 @@ class CaptureManager(object):
             h,w,_=self._frame.shape
             frame=self._frame[(h//2)-240:(h//2)+240, (w//2)-320:(w//2)+320].copy()
             print(frame.shape)
-            return frame
+            return self._frame
 
     def saveImage(self, frame=None, path="./", imageName=''):
 

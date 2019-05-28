@@ -103,7 +103,7 @@ class MainWindowUi(Ui_MainWindow):
         self.ImagePreview.setPixmap(QtGui.QPixmap(temp))
 
     def showSetup(self):
-        self.SetupInterface = SetupInterface(self.captureManager)
+        self.SetupInterface = SetupInterface(self.captureManager,self)
 
     def loadConfig(self):
         self.config.read('config/config' + str(self.captureManager.programNumber) + '.ini')
@@ -201,7 +201,6 @@ class MainWindowUi(Ui_MainWindow):
         if self.frame is None:
             return
 
-        self.compare()
 
         if self.pixelColor[self.captureManager.toolIndex] is not None:
             pixels, frame = self.processingTools.countColorPixel(self.frame, self.pixelColor[
@@ -212,6 +211,9 @@ class MainWindowUi(Ui_MainWindow):
             self.NewResults[self.captureManager.toolIndex] = pixels
         else:
             self.setImagePreview(self.frame)
+
+        self.compare()
+
 
     def measureDistance(self):
         if self.frame is None:
@@ -278,12 +280,13 @@ class MainWindowUi(Ui_MainWindow):
 
         self.setImagePreview(frame)
         self.NewResults[self.captureManager.toolIndex] = (xdistance, ydistance, distance)
+        self.compare()
 
     def detectPattern(self):
         if self.frame is None:
             return
 
-        self.compare()
+
 
         self.setImagePreview(self.frame)
 
@@ -295,6 +298,7 @@ class MainWindowUi(Ui_MainWindow):
         self.setImagePreview(pattern)
 
         self.NewResults[self.captureManager.toolIndex] = len(pos)
+        self.compare()
 
     def coloredPixel(self):
         if self.frame is not None:
@@ -326,8 +330,7 @@ class MainWindowUi(Ui_MainWindow):
             self.measurementThresh[self.captureManager.toolIndex] = self.ThreshSlider4
 
         self.measureDistance()
-        if self.frame is not None:
-            self.compare()
+
 
         QtCore.QObject.connect(self.measurementThresh[self.captureManager.toolIndex],
                                QtCore.SIGNAL("valueChanged(int)"),
