@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="312f9fde-e7e6-4101-94fd-e48223bd1d94" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config1.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config1.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config2.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config2.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config5.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config5.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config0.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config0.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config4.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config4.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/MainWindowUi.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/MainWindowUi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/SetupInterface.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/SetupInterface.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,11 +51,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/MainWindowUi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-341">
-              <caret line="133" column="36" selection-start-line="133" selection-start-column="36" selection-end-line="133" selection-end-column="36" />
+            <state relative-caret-position="461">
+              <caret line="258" column="25" selection-start-line="258" selection-start-column="25" selection-end-line="258" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/config4.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -71,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/SetupInterface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="493" column="76" lean-forward="true" selection-start-line="493" selection-start-column="76" selection-end-line="493" selection-end-column="76" />
+            <state relative-caret-position="-1630">
+              <caret line="483" column="52" lean-forward="true" selection-start-line="483" selection-start-column="52" selection-end-line="483" selection-end-column="52" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -86,8 +93,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/ProcessingTools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="27" column="14" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="14" />
+            <state relative-caret-position="276">
+              <caret line="111" column="27" lean-forward="true" selection-start-line="111" selection-start-column="27" selection-end-line="111" selection-end-column="27" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -124,7 +131,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self.captureManager.pixelColor</find>
       <find>value</find>
       <find>Enable1</find>
       <find>showFrame</find>
@@ -148,15 +154,15 @@
       <find>self.firstMeasurePoint</find>
       <find>ThreshValue</find>
       <find>setIma</find>
-      <find>print</find>
       <find>meas</find>
       <find>cropfr</find>
-      <find>save</find>
       <find>Masters/MasterPattern</find>
       <find>masterP</find>
+      <find>self.Enable</find>
+      <find>save</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
-      <replace>_mouseColorSelect</replace>
       <replace>cv2.</replace>
       <replace>x</replace>
       <replace>master</replace>
@@ -186,6 +192,7 @@
       <replace>secondMeasurePoint</replace>
       <replace>ThreshSlider</replace>
       <replace>MasterPatterns/MasterPattern</replace>
+      <replace>setCheckable(False)</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -231,17 +238,17 @@
         <option value="$PROJECT_DIR$/config/config5.ini" />
         <option value="$PROJECT_DIR$/config/ncjdsnvd.sh" />
         <option value="$PROJECT_DIR$/testClass.py" />
-        <option value="$PROJECT_DIR$/modules/ProcessingTools.py" />
         <option value="$PROJECT_DIR$/modules/CaptureManager.py" />
         <option value="$PROJECT_DIR$/raspberryPiVisionSensor.py" />
         <option value="$PROJECT_DIR$/config/config0.ini" />
-        <option value="$PROJECT_DIR$/modules/MainWindowUi.py" />
         <option value="$PROJECT_DIR$/modules/SetupInterface.py" />
+        <option value="$PROJECT_DIR$/modules/ProcessingTools.py" />
+        <option value="$PROJECT_DIR$/modules/MainWindowUi.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1536" />
+    <option name="x" value="1425" />
     <option name="y" value="-4" />
     <option name="width" value="1861" />
     <option name="height" value="1084" />
@@ -612,7 +619,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559034431408</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="config and setup adjusment">
+      <created>1559036346912</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1559036346912</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView">
@@ -625,7 +639,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1424" y="-4" width="1863" height="1085" extended-state="6" />
+    <frame x="1425" y="-4" width="1861" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4930468" visible="true" weight="0.15995647" />
@@ -736,7 +750,8 @@
     <MESSAGE value="adjust config files and save config method to new measurement" />
     <MESSAGE value="visionSensor V1.0 Desktop application beta testing" />
     <MESSAGE value="VisionSensor raspberryPi version" />
-    <option name="LAST_COMMIT_MESSAGE" value="VisionSensor raspberryPi version" />
+    <MESSAGE value="config and setup adjusment" />
+    <option name="LAST_COMMIT_MESSAGE" value="config and setup adjusment" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/CaptureManager.py" />
@@ -878,13 +893,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config4.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/config2.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -912,16 +920,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ProcessingTools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="27" column="14" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="14" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -966,16 +964,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testClass.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="80" column="43" selection-start-line="80" selection-start-column="43" selection-end-line="80" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-1247971764/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
@@ -989,20 +977,47 @@
     <entry file="file://$PROJECT_DIR$/MasterPatterns/MasterPattern2.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/MainWindowUi.py">
+    <entry file="file://$PROJECT_DIR$/testClass.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-341">
-          <caret line="133" column="36" selection-start-line="133" selection-start-column="36" selection-end-line="133" selection-end-column="36" />
+        <state relative-caret-position="304">
+          <caret line="80" column="43" selection-start-line="80" selection-start-column="43" selection-end-line="80" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/SetupInterface.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="493" column="76" lean-forward="true" selection-start-line="493" selection-start-column="76" selection-end-line="493" selection-end-column="76" />
+        <state relative-caret-position="-1630">
+          <caret line="483" column="52" lean-forward="true" selection-start-line="483" selection-start-column="52" selection-end-line="483" selection-end-column="52" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config4.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/ProcessingTools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="111" column="27" lean-forward="true" selection-start-line="111" selection-start-column="27" selection-end-line="111" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/MainWindowUi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="258" column="25" selection-start-line="258" selection-start-column="25" selection-end-line="258" selection-end-column="25" />
         </state>
       </provider>
     </entry>
