@@ -15,6 +15,8 @@ import time
 class SetupInterface(Ui_SetupWindow):
     def __init__(self, captureManager):
         super(SetupInterface, self).__init__()
+
+        self.masterPattern = None
         self.measurePoints = ((0, 0), (0, 0))
         self.config = ConfigParser()
         self.frame = None
@@ -487,10 +489,13 @@ class SetupInterface(Ui_SetupWindow):
         self.statusbar.showMessage("")
 
         try:
-            self.masterPattern = self.captureManager.loadFrame('./Masters/MasterPattern' +
+            self.masterPattern = self.captureManager.loadFrame('./MasterPatterns/MasterPattern' +
                                                                str(self.captureManager.programNumber) + '.jpg')
+            self.statusbar.showMessage("master pattern successfully loaded")
+
         except Exception:
             pass
+
         if self.masterPattern is None:
             self.statusbar.showMessage("no reference found please select a new reference")
             self.enable('selectPattern')

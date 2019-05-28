@@ -57,6 +57,7 @@ class MainWindowUi(Ui_MainWindow):
         QtCore.QObject.connect(self.ThreshSlider4, QtCore.SIGNAL("sliderPressed()"),
                                self.setToolIndex4)
 
+
     def setToolIndex1(self):
         self.captureManager.toolIndex = 1
         self.savePassThresh(1, self.ThreshSlider1.value())
@@ -129,6 +130,11 @@ class MainWindowUi(Ui_MainWindow):
         self.ToolName2.setText(self.config.get("Tool2_Settings", "tool name"))
         self.ToolName3.setText(self.config.get("Tool3_Settings", "tool name"))
         self.ToolName4.setText(self.config.get("Tool4_Settings", "tool name"))
+
+        self.validation1.setText("")
+        self.validation2.setText("")
+        self.validation3.setText("")
+        self.validation4.setText("")
 
         if self.config.get("Tool1_Settings", "tool name") == 'Tool1':
             self.Enable1.setChecked(False)
