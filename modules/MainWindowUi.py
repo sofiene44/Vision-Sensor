@@ -14,6 +14,7 @@ class MainWindowUi(Ui_MainWindow):
 
     def __init__(self, captureManager):
         super(MainWindowUi, self).__init__()
+        self.passThresh=[0]*5
         self.mixedFrame = [None] * 5
         self.measurementPoints = [None] * 5
         self.areaOfInterest = [None] * 5
@@ -33,40 +34,51 @@ class MainWindowUi(Ui_MainWindow):
         self.toolList = [None] * 5
         self.ignoredPixels = [None] * 5
         self.Results = [None] * 5
-        self.NewResults = [None] * 5
+        self.NewResults = [0] * 5
         self.edged = [None] * 5
 
         self.loadConfig()
         self.captureManager.toolIndex = None
 
-        QtCore.QObject.connect(self.ThreshSlider1, QtCore.SIGNAL("sliderPressed()"),
-                               self.setToolIndex1)
         QtCore.QObject.connect(self.ThreshSlider1, QtCore.SIGNAL("valueChanged(int)"),
                                self.setToolIndex1)
-        QtCore.QObject.connect(self.ThreshSlider2, QtCore.SIGNAL("sliderPressed()"),
-                               self.setToolIndex2)
+        QtCore.QObject.connect(self.ThreshSlider1, QtCore.SIGNAL("sliderPressed()"),
+                               self.setToolIndex1)
         QtCore.QObject.connect(self.ThreshSlider2, QtCore.SIGNAL("valueChanged(int)"),
                                self.setToolIndex2)
-        QtCore.QObject.connect(self.ThreshSlider3, QtCore.SIGNAL("sliderPressed()"),
-                               self.setToolIndex3)
+        QtCore.QObject.connect(self.ThreshSlider2, QtCore.SIGNAL("sliderPressed()"),
+                               self.setToolIndex2)
         QtCore.QObject.connect(self.ThreshSlider3, QtCore.SIGNAL("valueChanged(int)"),
                                self.setToolIndex3)
-        QtCore.QObject.connect(self.ThreshSlider4, QtCore.SIGNAL("sliderPressed()"),
-                               self.setToolIndex4)
+        QtCore.QObject.connect(self.ThreshSlider3, QtCore.SIGNAL("sliderPressed()"),
+                               self.setToolIndex3)
         QtCore.QObject.connect(self.ThreshSlider4, QtCore.SIGNAL("valueChanged(int)"),
+                               self.setToolIndex4)
+        QtCore.QObject.connect(self.ThreshSlider4, QtCore.SIGNAL("sliderPressed()"),
                                self.setToolIndex4)
 
     def setToolIndex1(self):
         self.captureManager.toolIndex = 1
+        self.savePassThresh(1, self.ThreshSlider1.value())
+        print("tool1")
 
     def setToolIndex2(self):
         self.captureManager.toolIndex = 2
+        self.savePassThresh(2, self.ThreshSlider2.value())
+        print("tool2")
+
 
     def setToolIndex3(self):
         self.captureManager.toolIndex = 3
+        self.savePassThresh(3, self.ThreshSlider3.value())
+        print("tool3")
+
 
     def setToolIndex4(self):
         self.captureManager.toolIndex = 4
+        self.savePassThresh(4, self.ThreshSlider4.value())
+        print("tool4")
+
 
     # load an existing frame, takes Frame path as argument,default frame is replaced by the read frame
 
@@ -111,6 +123,7 @@ class MainWindowUi(Ui_MainWindow):
         self.measurementPoints = [None] * 5
         self.ignoredPixels = [None] * 5
         self.Results = [None] * 5
+        self.passThresh = [0] * 5
 
         self.ToolName1.setText(self.config.get("Tool1_Settings", "tool name"))
         self.ToolName2.setText(self.config.get("Tool2_Settings", "tool name"))
@@ -120,34 +133,45 @@ class MainWindowUi(Ui_MainWindow):
         if self.config.get("Tool1_Settings", "tool name") == 'Tool1':
             self.Enable1.setChecked(False)
             self.Enable1.setCheckable(False)
+            self.ThreshSlider1.setValue(0)
 
         else:
             self.Enable1.setCheckable(True)
             self.Enable1.setChecked(True)
+            self.ThreshSlider1.setValue(int(self.config.get("Tool1_Settings", "pass thresh")))
+            self.passThresh[1]=self.ThreshSlider1.value()
 
         if self.config.get("Tool2_Settings", "tool name") == 'Tool2':
             self.Enable2.setChecked(False)
             self.Enable2.setCheckable(False)
+            self.ThreshSlider2.setValue(0)
 
         else:
             self.Enable2.setCheckable(True)
             self.Enable2.setChecked(True)
+            self.ThreshSlider2.setValue(int(self.config.get("Tool2_Settings", "pass thresh")))
+            self.passThresh[2] = self.ThreshSlider2.value()
 
         if self.config.get("Tool3_Settings", "tool name") == 'Tool3':
             self.Enable3.setChecked(False)
             self.Enable3.setCheckable(False)
-
+            self.ThreshSlider3.setValue(0)
         else:
             self.Enable3.setCheckable(True)
             self.Enable3.setChecked(True)
+            self.ThreshSlider3.setValue(int(self.config.get("Tool3_Settings", "pass thresh")))
+            self.passThresh[3] = self.ThreshSlider3.value()
 
         if self.config.get("Tool4_Settings", "tool name") == 'Tool4':
             self.Enable4.setChecked(False)
             self.Enable4.setCheckable(False)
+            self.ThreshSlider4.setValue(0)
 
         else:
             self.Enable4.setCheckable(True)
             self.Enable4.setChecked(True)
+            self.ThreshSlider4.setValue(int(self.config.get("Tool4_Settings", "pass thresh")))
+            self.passThresh[4] = self.ThreshSlider4.value()
 
         for toolIndex in range(1, 5):
             self.captureManager.toolIndex = toolIndex
@@ -176,6 +200,8 @@ class MainWindowUi(Ui_MainWindow):
         if self.frame is None:
             return
 
+        self.compare()
+
         if self.pixelColor[self.captureManager.toolIndex] is not None:
             pixels, frame = self.processingTools.countColorPixel(self.frame, self.pixelColor[
                 self.captureManager.toolIndex], self.threshValue[self.captureManager.toolIndex])
@@ -190,11 +216,12 @@ class MainWindowUi(Ui_MainWindow):
         if self.frame is None:
             return
 
+
         # xdistance, ydistance, edgedMeasure = self.processingTools.measure(
         #     self.edged[self.captureManager.toolIndex], self.threshValue[self.captureManager.toolIndex], True, True)
         # self.setImagePreview(edgedMeasure)
         # self.NewResults[self.captureManager.toolIndex] = (xdistance, ydistance)
-
+        print(self.areaOfInterest[self.captureManager.toolIndex])
         startPoint = self.areaOfInterest[self.captureManager.toolIndex][0]
         endPoint = self.areaOfInterest[self.captureManager.toolIndex][1]
 
@@ -248,6 +275,9 @@ class MainWindowUi(Ui_MainWindow):
         if self.frame is None:
             return
 
+        self.compare()
+
+
         self.setImagePreview(self.frame)
 
         # maxThresh = self.patternThresh[self.captureManager.toolIndex].maximum()
@@ -295,6 +325,7 @@ class MainWindowUi(Ui_MainWindow):
         QtCore.QObject.connect(self.measurementThresh[self.captureManager.toolIndex],
                                QtCore.SIGNAL("valueChanged(int)"),
                                self.compare)
+
         QtCore.QObject.connect(self.measurementThresh[self.captureManager.toolIndex], QtCore.SIGNAL("sliderPressed()"),
                                self.measureDistance)
 
@@ -318,18 +349,52 @@ class MainWindowUi(Ui_MainWindow):
         self.detectPattern()
         QtCore.QObject.connect(self.patternThresh[self.captureManager.toolIndex], QtCore.SIGNAL("valueChanged(int)"),
                                self.compare)
+
         QtCore.QObject.connect(self.patternThresh[self.captureManager.toolIndex], QtCore.SIGNAL("sliderPressed()"),
                                self.detectPattern)
 
     def compare(self):
+
         threshSensible = [0, self.ThreshSlider1.value(), self.ThreshSlider2.value(), self.ThreshSlider3.value(),
                           self.ThreshSlider4.value()]
+        validationLabel = [None,self.validation1,self.validation2,self.validation3,self.validation4]
+        sensibility=threshSensible[self.captureManager.toolIndex]
+        valid=validationLabel[self.captureManager.toolIndex]
+        print(self.captureManager.toolIndex)
         oldResult = self.Results[self.captureManager.toolIndex]
         newResult = self.NewResults[self.captureManager.toolIndex]
         print(self.toolList[self.captureManager.toolIndex])
         if type(oldResult) is int:
             print("new ", newResult, " old ", oldResult)
+            if oldResult-sensibility*oldResult*0.01 < newResult < oldResult+sensibility*oldResult*0.01:
+                valid.setText("OK")
+                valid.setStyleSheet("color: green")
+                return
+            else:
+                valid.setText("NOT OK")
+                valid.setStyleSheet("color: red")
+                return
         else:
+            ok=True
             for i in range(0, len(oldResult)):
                 print("new ", newResult[i], " old ", oldResult[i])
-            print(threshSensible[self.captureManager.toolIndex])
+                if not oldResult[i] - sensibility * oldResult[i] * 0.01 < newResult[i] < oldResult[i] + sensibility * oldResult[i] * 0.01:
+                    ok=False
+            if ok:
+                valid.setText("OK")
+                valid.setStyleSheet("color: green")
+                return
+            else:
+                valid.setText("NOT OK")
+                valid.setStyleSheet("color: red")
+                return
+
+
+
+
+    def savePassThresh(self, toolIndex, passThresh):
+        tool = "Tool" + str(toolIndex) + "_Settings"
+        self.config.set(tool, "pass thresh", str(passThresh))
+
+        with open('config/config' + str(self.captureManager.programNumber) + '.ini', 'w') as configfile:
+            self.config.write(configfile)

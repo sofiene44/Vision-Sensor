@@ -1,4 +1,3 @@
-#from RPiSim.GPIO import GPIO
 from RPi import GPIO
 
 
@@ -71,7 +70,7 @@ visionSensor = VisionSensor()
 visionSensor.run()
 
 
-        
+
 
 
 
