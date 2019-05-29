@@ -103,7 +103,8 @@ class VisionSensor(object):
 
     def readFrame(self):
         self.captureManager.setCamera()
-        self.frame = self.captureManager.readFrame()
+        self.frame = self.captureManager.readFrameSmartphone()
+        print(self.frame)
         self.captureManager.cameraRelease()
 
     def countColorPixels(self, toolIndex):

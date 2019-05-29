@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="312f9fde-e7e6-4101-94fd-e48223bd1d94" name="Default Changelist" comment="parameters adjustment&#10;remove cropping at loading">
-      <change afterPath="$PROJECT_DIR$/sendToRaspberry.sh" afterDir="false" />
+    <list default="true" id="312f9fde-e7e6-4101-94fd-e48223bd1d94" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config0.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config0.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/CaptureManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/CaptureManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/CaptureManager22NotOrganised.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/MainWindowUi.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/MainWindowUi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/SetupInterface.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/SetupInterface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/raspberryPiVisionSensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/raspberryPiVisionSensor.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/raspberryPiVisionSensor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
+            <state relative-caret-position="329">
+              <caret line="105" column="60" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -32,8 +36,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/VisionSensorDesktop.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="78" column="30" selection-start-line="78" selection-start-column="30" selection-end-line="78" selection-end-column="30" />
+            <state relative-caret-position="-144">
+              <caret line="62" column="35" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="35" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -42,22 +46,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/lib/python3.5/dist-packages/RPi/GPIO.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4755">
-              <caret line="322" column="33" selection-start-line="322" selection-start-column="33" selection-end-line="322" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/MainWindowUi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1500">
-              <caret line="107" column="18" selection-start-line="107" selection-start-column="8" selection-end-line="107" selection-end-column="18" />
+            <state relative-caret-position="202">
+              <caret line="83" column="47" lean-forward="true" selection-start-line="83" selection-start-column="47" selection-end-line="83" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -71,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/CaptureManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+            <state relative-caret-position="227">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -95,8 +87,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/SetupInterface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8640">
-              <caret line="587" column="31" selection-start-line="587" selection-start-column="31" selection-end-line="587" selection-end-column="31" />
+            <state relative-caret-position="202">
+              <caret line="106" column="66" selection-start-line="106" selection-start-column="65" selection-end-line="106" selection-end-column="66" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -127,9 +119,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find />
-      <find>cropArea</find>
-      <find>selectPattern</find>
       <find>Cropping</find>
       <find>Cropped</find>
       <find>rec</find>
@@ -157,6 +146,9 @@
       <find>print</find>
       <find>/M</find>
       <find>next</find>
+      <find>readFr</find>
+      <find>readFrame</find>
+      <find>readFrame()</find>
     </findStrings>
     <replaceStrings>
       <replace>x</replace>
@@ -236,18 +228,18 @@
         <option value="$PROJECT_DIR$/testClass.py" />
         <option value="$PROJECT_DIR$/config/config0.ini" />
         <option value="$PROJECT_DIR$/modules/ProcessingTools.py" />
-        <option value="$PROJECT_DIR$/modules/CaptureManager.py" />
+        <option value="$PROJECT_DIR$/raspberryPiVisionSensor.py" />
         <option value="$PROJECT_DIR$/modules/MainWindowUi.py" />
         <option value="$PROJECT_DIR$/modules/SetupInterface.py" />
-        <option value="$PROJECT_DIR$/raspberryPiVisionSensor.py" />
+        <option value="$PROJECT_DIR$/modules/CaptureManager.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1425" />
+    <option name="x" value="1424" />
     <option name="y" value="-4" />
-    <option name="width" value="1861" />
-    <option name="height" value="1084" />
+    <option name="width" value="1863" />
+    <option name="height" value="1085" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -295,7 +287,7 @@
             <path>
               <item name="Vision-Sensor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Vision-Sensor" type="462c0819:PsiDirectoryNode" />
-              <item name="pictures" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -307,7 +299,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/MasterPatterns" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -334,7 +326,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.raspberryPiVisionSensor">
+  <component name="RunManager" selected="Python.testClass">
     <configuration name="CaptureManager (1)" type="PythonConfigurationType" factoryName="Python">
       <module name="Vision-Sensor" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -463,8 +455,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.raspberryPiVisionSensor" />
         <item itemvalue="Python.testClass" />
+        <item itemvalue="Python.raspberryPiVisionSensor" />
         <item itemvalue="Python.SetupInterface" />
         <item itemvalue="Python.MainWindowUi" />
         <item itemvalue="Python.CaptureManager" />
@@ -636,7 +628,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559052527702</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="add send files to raspberry script &#10;and raspberry program adjustments">
+      <created>1559121880922</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1559121880922</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView">
@@ -650,13 +649,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1424" y="-4" width="1863" height="1085" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4930468" visible="true" weight="0.16158868" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4930468" visible="true" weight="0.16158868" />
       <window_info id="Structure" order="1" sideWeight="0.5031315" side_tool="true" weight="0.22975078" />
       <window_info id="Favorites" order="2" sideWeight="0.50695324" side_tool="true" weight="0.16050054" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32925585" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49945593" visible="true" weight="0.34454638" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49945593" weight="0.34454638" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39959225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -761,7 +761,8 @@
     <MESSAGE value="VisionSensor raspberryPi version" />
     <MESSAGE value="config and setup adjusment" />
     <MESSAGE value="parameters adjustment&#10;remove cropping at loading" />
-    <option name="LAST_COMMIT_MESSAGE" value="parameters adjustment&#10;remove cropping at loading" />
+    <MESSAGE value="add send files to raspberry script &#10;and raspberry program adjustments" />
+    <option name="LAST_COMMIT_MESSAGE" value="add send files to raspberry script &#10;and raspberry program adjustments" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/CaptureManager.py" />
@@ -953,23 +954,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/lib/python3.5/dist-packages/RPi/GPIO.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4755">
-          <caret line="322" column="33" selection-start-line="322" selection-start-column="33" selection-end-line="322" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/MainWindowUi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1500">
-          <caret line="107" column="18" selection-start-line="107" selection-start-column="8" selection-end-line="107" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/config4.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -977,30 +961,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/CaptureManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/config0.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/SetupInterface.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8640">
-          <caret line="587" column="31" selection-start-line="587" selection-start-column="31" selection-end-line="587" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1014,22 +978,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisionSensorDesktop.py">
+    <entry file="file://$PROJECT_DIR$/raspberryPiVisionSensor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="78" column="30" selection-start-line="78" selection-start-column="30" selection-end-line="78" selection-end-column="30" />
+        <state relative-caret-position="329">
+          <caret line="105" column="60" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.5/dist-packages/RPi/GPIO.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="322" column="33" selection-start-line="322" selection-start-column="33" selection-end-line="322" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/SetupInterface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="106" column="66" selection-start-line="106" selection-start-column="65" selection-end-line="106" selection-end-column="66" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/raspberryPiVisionSensor.py">
+    <entry file="file://$PROJECT_DIR$/modules/MainWindowUi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
+        <state relative-caret-position="202">
+          <caret line="83" column="47" lean-forward="true" selection-start-line="83" selection-start-column="47" selection-end-line="83" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisionSensorDesktop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-144">
+          <caret line="62" column="35" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="35" />
           <folding>
-            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/CaptureManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>

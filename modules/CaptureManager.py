@@ -1,5 +1,7 @@
 import cv2
 import os
+import urllib.request
+import numpy as np
 
 from modules.ProcessingTools import ProcessingTools
 from PyQt4 import QtGui
@@ -21,6 +23,23 @@ class CaptureManager(object):
         h, w, _ = self._frame.shape
         frame = self._frame[(h // 2) - 240:(h // 2) + 240, (w // 2) - 320:(w // 2) + 320].copy()
         return self._frame
+
+    def readFrameSmartphone(self):
+        url = 'http://10.10.50.96:8080/shot.jpg'
+
+        try:
+            imgResp = urllib.request.urlopen(url)
+            imgNp = np.array(bytearray(imgResp.read()), dtype=np.uint8)
+            img = cv2.imdecode(imgNp, -1)
+            h, w, _ = img.shape
+            if img is not None:
+                self._frame=img
+            frame = self._frame[(h // 2) - 240:(h // 2) + 240, (w // 2) - 320:(w // 2) + 320].copy()
+
+        except:
+            print("waiting for camera to connect")
+            frame = None
+        return frame
 
     def readFrame(self):
         if self._camera is not None:
