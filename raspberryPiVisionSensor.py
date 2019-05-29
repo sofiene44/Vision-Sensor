@@ -21,19 +21,19 @@ class VisionSensor(object):
 
         # Program Number
         for i in programNumber:
-            GPIO.setup(i, GPIO.IN)
+            GPIO.setup(i, GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
             GPIO.add_event_detect(i, GPIO.BOTH)
 
         # trigger
-        GPIO.setup(trigger, GPIO.IN)
+        GPIO.setup(trigger, GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
         GPIO.add_event_detect(trigger, GPIO.RISING)
 
-        #results
+        # results
         for i in validTools:
-            GPIO.setup(i, GPIO.OUT,initial=GPIO.LOW)
+            GPIO.setup(i, GPIO.OUT, initial=GPIO.LOW)
 
-        GPIO.setup(finishedTest, GPIO.OUT,initial=GPIO.LOW)
-        GPIO.setup(validTest, GPIO.OUT,initial=GPIO.LOW)
+        GPIO.setup(finishedTest, GPIO.OUT, initial=GPIO.LOW)
+        GPIO.setup(validTest, GPIO.OUT, initial=GPIO.LOW)
 
         # VisionSensor setup
         self.frame = None
@@ -58,6 +58,9 @@ class VisionSensor(object):
                 GPIO.add_event_detect(i, GPIOevent)
 
     def loadConfig(self):
+        if self.captureManager.programNumber > 5:
+            print("failed to load program ", self.captureManager.programNumber)
+            return False
 
         print('loadConfig ', self.captureManager.programNumber)
         self.config.read('config/config' + str(self.captureManager.programNumber) + '.ini')
@@ -95,6 +98,8 @@ class VisionSensor(object):
             elif self.config.get(tool, "tool name") == 'Pattern Detection Tool':
                 self.threshValue[toolIndex] = int(self.config.get(tool, 'tool thresh'))
                 self.Results[toolIndex] = int(self.config.get(tool, "result"))
+
+        return True
 
     def readFrame(self):
         self.captureManager.setCamera()
@@ -176,7 +181,7 @@ class VisionSensor(object):
         if type(oldResult) is int:
             print("new ", newResult, " old ", oldResult)
             if oldResult - sensibility * oldResult * 0.01 < newResult < oldResult + sensibility * oldResult * 0.01:
-                GPIO.output(validTools[toolIndex-1], GPIO.HIGH)
+                GPIO.output(validTools[toolIndex - 1], GPIO.HIGH)
                 print("Pass")
                 return True
             else:
@@ -200,15 +205,15 @@ class VisionSensor(object):
                 return False
 
     def run(self):
-        self.loadConfig()
+        loaded = self.loadConfig()
         while True:
-            self.test = [True]*5
+            self.test = [True] * 5
             if GPIO.event_detected(programNumber[0]) or GPIO.event_detected(programNumber[1]) or \
                     GPIO.event_detected(programNumber[2]):
                 visionSensor.resetEvent(programNumber, GPIO.BOTH)
                 visionSensor.captureManager.programNumber = visionSensor.getProgramNumber()
-                visionSensor.loadConfig()
-            elif GPIO.event_detected(trigger):
+                loaded = visionSensor.loadConfig()
+            elif GPIO.event_detected(trigger) and loaded:
                 print("=========================================")
                 GPIO.output(finishedTest, GPIO.LOW)
                 GPIO.output(validTest, GPIO.LOW)
@@ -219,21 +224,23 @@ class VisionSensor(object):
                     print("--------------------")
                     if self.toolList[toolIndex] == "Color Pixel Tool":
                         self.countColorPixels(toolIndex)
-                        self.test[toolIndex]=self.compare(toolIndex)
+                        self.test[toolIndex] = self.compare(toolIndex)
                     elif self.toolList[toolIndex] == "measurement Tool":
                         self.measureDistance(toolIndex)
-                        self.test[toolIndex]=self.compare(toolIndex)
+                        self.test[toolIndex] = self.compare(toolIndex)
                     elif self.toolList[toolIndex] == "Pattern Detection Tool":
                         self.detectPattern(toolIndex)
-                        self.test[toolIndex]=self.compare(toolIndex)
+                        self.test[toolIndex] = self.compare(toolIndex)
                     else:
                         pass
                 GPIO.output(finishedTest, GPIO.HIGH)
-                if self.test==[True]*5:
+                if self.test == [True] * 5:
                     GPIO.output(validTest, GPIO.HIGH)
+
+            # else:
+            #     print("waiting for command signal")
 
 
 if __name__ == "__main__":
     visionSensor = VisionSensor()
     visionSensor.run()
-
