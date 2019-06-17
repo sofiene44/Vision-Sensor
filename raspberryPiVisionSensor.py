@@ -5,11 +5,11 @@ from modules.ProcessingTools import ProcessingTools
 from modules.CaptureManager import CaptureManager
 from configparser import ConfigParser
 
-programNumber = [2, 3, 4]
-trigger = 14
-finishedTest = 20
-validTest = 16
-validTools = [6, 13, 19, 26]
+programNumber = [4, 5, 6]
+trigger = 7
+finishedTest = 17
+validTest = 18
+validTools = [19, 20, 21, 22]
 
 
 class VisionSensor(object):
@@ -103,7 +103,8 @@ class VisionSensor(object):
 
     def readFrame(self):
         self.captureManager.setCamera()
-        self.frame = self.captureManager.readFrameSmartphone()
+        # self.frame = self.captureManager.readFrameSmartphone()
+        self.frame = self.captureManager.readFrame()
         print(self.frame)
         self.captureManager.cameraRelease()
 

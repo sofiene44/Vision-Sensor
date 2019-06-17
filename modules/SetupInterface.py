@@ -103,8 +103,8 @@ class SetupInterface(Ui_SetupWindow):
         if self.setupWindow.isVisible():
 
             self.captureManager.setCamera(0)
-            # self.frame = self.captureManager.readFrame()
-            self.frame = self.captureManager.readFrameSmartphone()
+            self.frame = self.captureManager.readFrame()
+            # self.frame = self.captureManager.readFrameSmartphone()
 
             self.setImagePreview(self.frame)
             self.captureManager.cameraRelease()
