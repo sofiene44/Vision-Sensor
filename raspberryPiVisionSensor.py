@@ -11,7 +11,6 @@ finishedTest = 17
 validTest = 18
 validTools = [19, 20, 21, 22]
 
-
 class VisionSensor(object):
 
     def __init__(self):
@@ -88,25 +87,26 @@ class VisionSensor(object):
                 self.pixelColor[toolIndex] = [int(e.strip('[],')) for e in pixelColor.split(' ')]
                 self.Results[toolIndex] = int(self.config.get(tool, "result"))
                 self.threshValue[toolIndex] = int(self.config.get(tool, 'tool thresh'))
+                self.passThresh[toolIndex] = int(self.config.get(tool, 'pass thresh'))
 
             elif self.config.get(tool, "tool name") == 'measurement Tool':
                 self.areaOfInterest[toolIndex] = ast.literal_eval(self.config.get(tool, "area of interest"))
                 self.Results[toolIndex] = ast.literal_eval(self.config.get(tool, "result"))
                 self.threshValue[toolIndex] = int(self.config.get(tool, 'tool thresh'))
                 self.measurementPoints[toolIndex] = ast.literal_eval(self.config.get(tool, "measurement points"))
+                self.passThresh[toolIndex] = int(self.config.get(tool, 'pass thresh'))
 
             elif self.config.get(tool, "tool name") == 'Pattern Detection Tool':
                 self.threshValue[toolIndex] = int(self.config.get(tool, 'tool thresh'))
                 self.Results[toolIndex] = int(self.config.get(tool, "result"))
+                self.passThresh[toolIndex] = int(self.config.get(tool, 'pass thresh'))
 
         return True
 
     def readFrame(self):
-        self.captureManager.setCamera()
         # self.frame = self.captureManager.readFrameSmartphone()
         self.frame = self.captureManager.readFrame()
         print(self.frame)
-        self.captureManager.cameraRelease()
 
     def countColorPixels(self, toolIndex):
         if self.frame is None:
@@ -174,7 +174,7 @@ class VisionSensor(object):
 
     def compare(self, toolIndex):
 
-        sensibility = self.threshValue[toolIndex]
+        sensibility = self.passThresh[toolIndex]
 
         oldResult = self.Results[toolIndex]
         newResult = self.NewResults[toolIndex]
@@ -186,6 +186,8 @@ class VisionSensor(object):
                 GPIO.output(validTools[toolIndex - 1], GPIO.HIGH)
                 print("Pass")
                 return True
+
+
             else:
                 GPIO.output(validTools[toolIndex - 1], GPIO.LOW)
                 print("Fail")
@@ -197,6 +199,7 @@ class VisionSensor(object):
                 if not oldResult[i] - sensibility * oldResult[i] * 0.01 < newResult[i] < oldResult[i] + sensibility * \
                        oldResult[i] * 0.01:
                     ok = False
+
             if ok:
                 GPIO.output(validTools[toolIndex - 1], GPIO.HIGH)
                 print("Pass")
@@ -209,6 +212,7 @@ class VisionSensor(object):
     def run(self):
         loaded = self.loadConfig()
         while True:
+
             self.test = [True] * 5
             if GPIO.event_detected(programNumber[0]) or GPIO.event_detected(programNumber[1]) or \
                     GPIO.event_detected(programNumber[2]):
@@ -217,6 +221,7 @@ class VisionSensor(object):
                 loaded = visionSensor.loadConfig()
             elif GPIO.event_detected(trigger) and loaded:
                 print("=========================================")
+
                 GPIO.output(finishedTest, GPIO.LOW)
                 GPIO.output(validTest, GPIO.LOW)
                 visionSensor.resetEvent(trigger, GPIO.RISING)

@@ -79,11 +79,10 @@ class MainWindowUi(Ui_MainWindow):
 
     def refreshFrame(self):
 
-        self.captureManager.setCamera()
         self.frame = self.captureManager.readFrame()
         # self.frame = self.captureManager.readFrameSmartphone()
         self.setImagePreview(self.frame)
-        self.captureManager.cameraRelease()
+
         if self.captureManager.toolIndex is None:
             return
         if self.config.get("Tool" + str(self.captureManager.toolIndex) + "_Settings",

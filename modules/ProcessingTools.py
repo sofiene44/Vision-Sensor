@@ -29,6 +29,10 @@ class ProcessingTools(object):
 
         heightCap = max(0, min(y + height, frame.shape[0]))
         widthCap = max(0, min(x + width, frame.shape[1]))
+        print(y,x)
+        print("height, width")
+        print(heightCap,widthCap)
+
         return frame[min(y, heightCap):max(y, heightCap), min(x, widthCap):max(x, widthCap)].copy()
 
     def replacePartFrame(self,masterFrame,slaveFrame,x=0,y=0):

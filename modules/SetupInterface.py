@@ -102,12 +102,10 @@ class SetupInterface(Ui_SetupWindow):
     def refreshFrame(self):
         if self.setupWindow.isVisible():
 
-            self.captureManager.setCamera(0)
             self.frame = self.captureManager.readFrame()
             # self.frame = self.captureManager.readFrameSmartphone()
 
             self.setImagePreview(self.frame)
-            self.captureManager.cameraRelease()
 
         else:
             self.capture = False
@@ -157,7 +155,10 @@ class SetupInterface(Ui_SetupWindow):
         x = event.pos().x()
         y = event.pos().y()
         self.pixelColor[self.captureManager.toolIndex] = self.frame[y, x]
+        print(self.pixelColor[self.captureManager.toolIndex])
+
         self.countColorPixels()
+
 
     def measureDistance(self):
         self.stopCropping()
@@ -329,14 +330,13 @@ class SetupInterface(Ui_SetupWindow):
         if (x, y) == self.startPoint:
             return
         if self.dragging:
+
             self.cropped = self.processingTools.cropFrame(self.frame, self.startPoint[0], self.startPoint[1],
                                                           (y - self.startPoint[1]), (x - self.startPoint[0]))
-
             # self.captureManager.drawRectangle(frame, (x, y), self.startPoint, (0, 0, 255))
             if self.measurementThresh[self.captureManager.toolIndex] is not None:
                 self.measurementThreshValue[self.captureManager.toolIndex] = self.measurementThresh[self.captureManager.toolIndex].value()
                 print(self.measurementThreshValue[self.captureManager.toolIndex])
-
 
 
             self.edged[self.captureManager.toolIndex] = self.processingTools.detectEdges(self.cropped,self.measurementThreshValue[self.captureManager.toolIndex]/100)
@@ -609,7 +609,7 @@ class SetupInterface(Ui_SetupWindow):
             if self.toolList[toolIndex] == 'Color Pixel Tool' and self.ColorThresh[toolIndex].isEnabled():
 
                 self.config.set(tool, "tool thresh", str(self.ColorThresh[toolIndex].value()))
-                self.config.set(tool, "pixel color", str(self.pixelColor[toolIndex]))
+                self.config.set(tool, "pixel color", str([self.pixelColor[toolIndex][0],self.pixelColor[toolIndex][1],self.pixelColor[toolIndex][2]]))
                 self.config.set(tool, "area of interest", "None")
                 self.config.set(tool, "measurement points", str(None))
                 self.config.set(tool, "Result", str(self.Results[toolIndex]))

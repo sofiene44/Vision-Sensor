@@ -97,7 +97,7 @@ import time
 if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
-    captureManager = CaptureManager(0)
+    captureManager = CaptureManager()
     mainWindowUi = MainWindowUi(captureManager)
     sys.exit(app.exec_())
 

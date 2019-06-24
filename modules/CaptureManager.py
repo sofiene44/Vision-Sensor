@@ -4,6 +4,7 @@ import urllib.request
 import numpy as np
 
 from modules.ProcessingTools import ProcessingTools
+from modules.ueyeCamera import ueyeCamera
 from PyQt4 import QtGui
 
 
@@ -11,7 +12,10 @@ class CaptureManager(object):
     def __init__(self, cameraIndex=None):
         self._activeWindow = None
         self._cameraIndex = cameraIndex
-        self._camera = None
+        if cameraIndex is None:
+            self._camera = ueyeCamera()
+        else:
+            self._camera = None
         self._frame = None
 
         self.programNumber = 0
@@ -22,7 +26,7 @@ class CaptureManager(object):
         self._frame = cv2.imread(path)
         h, w, _ = self._frame.shape
         frame = self._frame[(h // 2) - 240:(h // 2) + 240, (w // 2) - 320:(w // 2) + 320].copy()
-        return self._frame
+        return frame
 
     def readFrameSmartphone(self):
         url = 'http://10.10.50.96:8080/shot.jpg'
@@ -42,12 +46,19 @@ class CaptureManager(object):
         return frame
 
     def readFrame(self):
-        if self._camera is not None:
+        if self._cameraIndex is None:
+
+            self._frame=self._camera.readFrame()
+
+
+        elif self._camera is not None:
             _, self._frame = self._camera.read()
-            h,w,_=self._frame.shape
-            frame=self._frame[(h//2)-240:(h//2)+240, (w//2)-320:(w//2)+320].copy()
-            print(frame.shape)
-            return self._frame
+        else:
+            return
+        h,w,_=self._frame.shape
+        frame=self._frame[(h//2)-240:(h//2)+240, (w//2)-320:(w//2)+320].copy()
+        return frame
+
 
     def saveImage(self, frame=None, path="./", imageName=''):
 
@@ -107,6 +118,10 @@ class CaptureManager(object):
     def getProgramNumber(self):
         return self.programNumber
 
+    @property
+    def getCameraIndex(self):
+        return self._cameraIndex
+
     def cameraRelease(self):
         if self._camera is not None:
             self._camera.release()
@@ -115,8 +130,9 @@ class CaptureManager(object):
     def setCamera(self, cameraIndex=None):
 
         if cameraIndex is None:
-            self.cameraRelease()
-            self._camera = cv2.VideoCapture(self._cameraIndex)
+
+            self._cameraIndex=None
+            self._camera=ueyeCamera()
         else:
             self.cameraRelease()
             self._camera = cv2.VideoCapture(cameraIndex)
