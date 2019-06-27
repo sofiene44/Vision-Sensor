@@ -137,17 +137,19 @@ class MainWindowUi(Ui_MainWindow):
 
         else:
 
+            self.Enable1.setCheckable(True)
             self.Enable1.setChecked(True)
             self.Enable1.setCheckable(False)
             self.ThreshSlider1.setValue(int(self.config.get("Tool1_Settings", "pass thresh")))
             self.passThresh[1] = self.ThreshSlider1.value()
 
         if self.config.get("Tool2_Settings", "tool name") == 'Tool2':
-            self.Enable2.setCheckable(False)
             self.Enable2.setChecked(False)
+            self.Enable2.setCheckable(False)
             self.ThreshSlider2.setValue(0)
 
         else:
+            self.Enable2.setCheckable(True)
             self.Enable2.setChecked(True)
             self.Enable2.setCheckable(False)
             self.ThreshSlider2.setValue(int(self.config.get("Tool2_Settings", "pass thresh")))
@@ -158,6 +160,7 @@ class MainWindowUi(Ui_MainWindow):
             self.Enable3.setCheckable(False)
             self.ThreshSlider3.setValue(0)
         else:
+            self.Enable3.setCheckable(True)
             self.Enable3.setChecked(True)
             self.Enable3.setCheckable(False)
             self.ThreshSlider3.setValue(int(self.config.get("Tool3_Settings", "pass thresh")))
@@ -169,6 +172,7 @@ class MainWindowUi(Ui_MainWindow):
             self.ThreshSlider4.setValue(0)
 
         else:
+            self.Enable4.setCheckable(True)
             self.Enable4.setChecked(True)
             self.Enable4.setCheckable(False)
             self.ThreshSlider4.setValue(int(self.config.get("Tool4_Settings", "pass thresh")))

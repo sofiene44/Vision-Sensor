@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="312f9fde-e7e6-4101-94fd-e48223bd1d94" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/modules/ueyeCamera.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VisionSensorDesktop.py" beforeDir="false" afterPath="$PROJECT_DIR$/VisionSensorDesktop.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config4.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config4.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config5.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config5.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/CaptureManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/CaptureManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config0.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config0.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config1.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config1.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/MainWindowUi.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/MainWindowUi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/ProcessingTools.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/ProcessingTools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/SetupInterface.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/SetupInterface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/raspberryPiVisionSensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/raspberryPiVisionSensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sendToRaspberry.sh" beforeDir="false" afterPath="$PROJECT_DIR$/sendToRaspberry.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/raspberryPiVisionSensor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="121" column="18" lean-forward="true" selection-start-line="121" selection-start-column="18" selection-end-line="121" selection-end-column="18" />
+            <state relative-caret-position="1815">
+              <caret line="126" column="18" selection-start-line="126" selection-start-column="18" selection-end-line="126" selection-end-column="18" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -36,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/VisionSensorDesktop.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1156">
-              <caret line="99" column="36" lean-forward="true" selection-start-line="99" selection-start-column="36" selection-end-line="99" selection-end-column="36" />
+            <state relative-caret-position="167">
+              <caret line="71" column="28" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="28" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -51,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/ueyeCamera.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="199" lean-forward="true" selection-start-line="199" selection-end-line="199" />
+            <state relative-caret-position="2940">
+              <caret line="199" selection-start-line="199" selection-end-line="199" />
             </state>
           </provider>
         </entry>
@@ -60,8 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/CaptureManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="47" column="12" lean-forward="true" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
+            <state relative-caret-position="600">
+              <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -72,8 +68,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/MainWindowUi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="85" selection-start-line="85" selection-end-line="85" />
+            <state relative-caret-position="2505">
+              <caret line="174" column="42" selection-start-line="174" selection-start-column="42" selection-end-line="174" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/config1.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -81,7 +86,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/SetupInterface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="9000">
               <caret line="611" column="146" selection-start-line="611" selection-start-column="146" selection-end-line="611" selection-end-column="146" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
@@ -90,20 +95,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/config5.ini">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/config3.ini">
+        <entry file="file://$PROJECT_DIR$/sendToRaspberry.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+            <state relative-caret-position="165">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -111,8 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/ProcessingTools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="32" column="30" lean-forward="true" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+            <state relative-caret-position="450">
+              <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -131,7 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Masters/MasterPattern</find>
       <find>masterP</find>
       <find>self.Enable</find>
       <find>save</find>
@@ -161,6 +156,7 @@
       <find>height</find>
       <find>setCa</find>
       <find>self.startPoint[0]</find>
+      <find>enable</find>
     </findStrings>
     <replaceStrings>
       <replace>pictures/color-pixel-count.jpg</replace>
@@ -241,12 +237,13 @@
         <option value="$PROJECT_DIR$/config/config0.ini" />
         <option value="$PROJECT_DIR$/modules/read_Pyueye.py" />
         <option value="$PROJECT_DIR$/VisionSensorDesktop.py" />
-        <option value="$PROJECT_DIR$/modules/MainWindowUi.py" />
         <option value="$PROJECT_DIR$/modules/ueyeCamera.py" />
         <option value="$PROJECT_DIR$/modules/CaptureManager.py" />
         <option value="$PROJECT_DIR$/raspberryPiVisionSensor.py" />
         <option value="$PROJECT_DIR$/modules/ProcessingTools.py" />
         <option value="$PROJECT_DIR$/modules/SetupInterface.py" />
+        <option value="$PROJECT_DIR$/sendToRaspberry.sh" />
+        <option value="$PROJECT_DIR$/modules/MainWindowUi.py" />
       </list>
     </option>
   </component>
@@ -324,6 +321,11 @@
               <item name="Vision-Sensor" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="~/PycharmProjects/Vision-Sensor" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="MasterPatterns" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Vision-Sensor" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PycharmProjects/Vision-Sensor" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="Masters" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -482,9 +484,9 @@
       <list>
         <item itemvalue="Python.testClass" />
         <item itemvalue="Bash.sendToRaspberry.sh" />
+        <item itemvalue="Python.MainWindowUi" />
         <item itemvalue="Python.raspberryPiVisionSensor" />
         <item itemvalue="Python.SetupInterface" />
-        <item itemvalue="Python.MainWindowUi" />
       </list>
     </recent_temporary>
   </component>
@@ -674,7 +676,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560758403911</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="integration of pyueye">
+      <created>1561364445719</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1561364445719</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView">
@@ -687,15 +696,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1425" y="-4" width="1861" height="1084" extended-state="6" />
+    <frame x="58" y="-4" width="1309" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4930468" visible="true" weight="0.23068553" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4930468" visible="true" weight="0.23052959" />
       <window_info id="Structure" order="1" sideWeight="0.5031315" side_tool="true" weight="0.22975078" />
       <window_info id="Favorites" order="2" sideWeight="0.50695324" side_tool="true" weight="0.16050054" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32925585" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49945593" weight="0.36391437" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49945593" visible="true" weight="0.3632287" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39959225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -703,7 +712,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32110092" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3282365" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005441" side_tool="true" weight="0.28542304" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32110092" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.31988043" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24958678" />
@@ -803,18 +812,12 @@
     <MESSAGE value="add send files to raspberry script &#10;and raspberry program adjustments" />
     <MESSAGE value="wireless camera feature stream" />
     <MESSAGE value="gpio index modification" />
-    <option name="LAST_COMMIT_MESSAGE" value="gpio index modification" />
+    <MESSAGE value="integration of pyueye" />
+    <option name="LAST_COMMIT_MESSAGE" value="integration of pyueye" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Masters/Master1.jpg" />
     <entry file="file://$PROJECT_DIR$/modules/aaaaa.py" />
     <entry file="file://$PROJECT_DIR$/Masters/Master.png" />
-    <entry file="file://$PROJECT_DIR$/Masters/MasterImage0.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masters/MasterImage1.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/GUI/toolSettingsWindow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="539">
@@ -862,9 +865,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masters/MasterImage3.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Masters/MasterImage3.jpg" />
     <entry file="file://$PROJECT_DIR$/config.ini" />
     <entry file="file://$PROJECT_DIR$/config/__init__.py" />
     <entry file="file://$PROJECT_DIR$/config2.ini" />
@@ -916,13 +917,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config1.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-1247971764/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
@@ -930,12 +924,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MasterPatterns/MasterPattern3.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MasterPatterns/MasterPattern2.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/MasterPatterns/MasterPattern3.jpg" />
     <entry file="file://$PROJECT_DIR$/GUI/setupWindow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3485">
@@ -960,21 +949,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masters/MasterImage4.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Masters/MasterImage4.jpg" />
     <entry file="file://$PROJECT_DIR$/MasterPatterns/MasterPattern4.jpg" />
     <entry file="file://$PROJECT_DIR$/config/config4.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sendToRaspberry.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
@@ -985,13 +965,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config3.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python3.5/dist-packages/pyueye/ueye.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1366">
@@ -999,37 +972,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ueyeCamera.py">
+    <entry file="file://$PROJECT_DIR$/config/config3.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="199" lean-forward="true" selection-start-line="199" selection-end-line="199" />
+        <state relative-caret-position="330">
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisionSensorDesktop.py">
+    <entry file="file://$PROJECT_DIR$/config/config5.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="99" column="36" lean-forward="true" selection-start-line="99" selection-start-column="36" selection-end-line="99" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="375">
+          <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MasterPatterns/MasterPattern2.jpg" />
+    <entry file="file://$PROJECT_DIR$/MasterPatterns/MasterPattern5.jpg" />
+    <entry file="file://$PROJECT_DIR$/Masters/MasterImage1.jpg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/raspberryPiVisionSensor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="121" column="18" lean-forward="true" selection-start-line="121" selection-start-column="18" selection-end-line="121" selection-end-column="18" />
+        <state relative-caret-position="1815">
+          <caret line="126" column="18" selection-start-line="126" selection-start-column="18" selection-end-line="126" selection-end-column="18" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/modules/ueyeCamera.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2940">
+          <caret line="199" selection-start-line="199" selection-end-line="199" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modules/CaptureManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="47" column="12" lean-forward="true" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
+        <state relative-caret-position="600">
+          <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -1038,27 +1020,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/MainWindowUi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
+        <state relative-caret-position="2505">
+          <caret line="174" column="42" selection-start-line="174" selection-start-column="42" selection-end-line="174" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ProcessingTools.py">
+    <entry file="file://$PROJECT_DIR$/config/config1.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="32" column="30" lean-forward="true" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MasterPatterns/MasterPattern5.jpg">
-      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/SetupInterface.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="9000">
           <caret line="611" column="146" selection-start-line="611" selection-start-column="146" selection-end-line="611" selection-end-column="146" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
@@ -1066,10 +1042,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config5.ini">
+    <entry file="file://$PROJECT_DIR$/modules/ProcessingTools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
+        <state relative-caret-position="450">
+          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masters/MasterImage0.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sendToRaspberry.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MasterPatterns/MasterPattern0.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisionSensorDesktop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="71" column="28" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

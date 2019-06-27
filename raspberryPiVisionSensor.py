@@ -7,9 +7,11 @@ from configparser import ConfigParser
 
 programNumber = [4, 5, 6]
 trigger = 7
-finishedTest = 17
-validTest = 18
-validTools = [19, 20, 21, 22]
+
+busy=25
+ready = 27
+validTest = 21
+validTools = [17,18,19]
 
 class VisionSensor(object):
 
@@ -31,12 +33,15 @@ class VisionSensor(object):
         for i in validTools:
             GPIO.setup(i, GPIO.OUT, initial=GPIO.LOW)
 
-        GPIO.setup(finishedTest, GPIO.OUT, initial=GPIO.LOW)
+        GPIO.setup(ready, GPIO.OUT, initial=GPIO.LOW)
+        
+        GPIO.setup(busy, GPIO.OUT, initial=GPIO.LOW)
+        
         GPIO.setup(validTest, GPIO.OUT, initial=GPIO.LOW)
 
         # VisionSensor setup
         self.frame = None
-        self.captureManager = CaptureManager(0)
+        self.captureManager = CaptureManager()
         self.processingTools = ProcessingTools()
         self.config = ConfigParser()
         self.captureManager.programNumber = self.getProgramNumber()
@@ -121,6 +126,10 @@ class VisionSensor(object):
         if self.frame is None:
             return
 
+        xdistance = 0
+        ydistance = 0
+        distance= 0
+        
         startPoint = self.areaOfInterest[toolIndex][0]
         endPoint = self.areaOfInterest[toolIndex][1]
 
@@ -192,7 +201,8 @@ class VisionSensor(object):
                 GPIO.output(validTools[toolIndex - 1], GPIO.LOW)
                 print("Fail")
                 return False
-        else:
+        elif type(oldResult) is not int:
+            
             ok = True
             for i in range(0, len(oldResult)):
                 print("new ", newResult[i], " old ", oldResult[i])
@@ -211,6 +221,7 @@ class VisionSensor(object):
 
     def run(self):
         loaded = self.loadConfig()
+        GPIO.output(ready, GPIO.HIGH)
         while True:
 
             self.test = [True] * 5
@@ -221,8 +232,14 @@ class VisionSensor(object):
                 loaded = visionSensor.loadConfig()
             elif GPIO.event_detected(trigger) and loaded:
                 print("=========================================")
-
-                GPIO.output(finishedTest, GPIO.LOW)
+                
+                for i in validTools:
+                    GPIO.output(i, GPIO.LOW)
+                GPIO.output(validTest, GPIO.LOW)
+                
+                GPIO.output(busy, GPIO.HIGH)
+                
+                GPIO.output(ready, GPIO.LOW)
                 GPIO.output(validTest, GPIO.LOW)
                 visionSensor.resetEvent(trigger, GPIO.RISING)
                 print("execute tools")
@@ -240,7 +257,8 @@ class VisionSensor(object):
                         self.test[toolIndex] = self.compare(toolIndex)
                     else:
                         pass
-                GPIO.output(finishedTest, GPIO.HIGH)
+                GPIO.output(busy, GPIO.LOW)
+                GPIO.output(ready, GPIO.HIGH)
                 if self.test == [True] * 5:
                     GPIO.output(validTest, GPIO.HIGH)
 
