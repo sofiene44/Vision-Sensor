@@ -230,7 +230,7 @@ class VisionSensor(object):
                 visionSensor.resetEvent(programNumber, GPIO.BOTH)
                 visionSensor.captureManager.programNumber = visionSensor.getProgramNumber()
                 loaded = visionSensor.loadConfig()
-            elif GPIO.event_detected(trigger) and loaded:
+            elif GPIO.event_detected(trigger) and loaded and GPIO.input(trigger):
                 print("=========================================")
                 
                 for i in validTools:
